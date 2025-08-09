@@ -1,0 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+
+
+
+.ai-cv-landingpage{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-top: 16px;
+   
+  
+}
+
+.ai-cv-leftheading{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #6BAFB3;
+}
+.ai-cv-rightheading {
+  font-family: 'Open Sans', sans-serif;
+
+ display: flex;
+ flex-direction: row;
+ gap:16px;
+  color: #6BAFB3;
+}
+
+.ai-cv-image{
+   
+    background:rebeccapurple;
+    border: none;
+    border-radius: 4px;
+}
+.ai-cv-image:hover{
+    background-color: pink;
+    border: none;
+    border-radius: 4px;
+}
+
+.ai-cv-intropage{
+    display: flex;
+    justify-content: center;
+    background: #7CAFB1;
+    margin-top:8px;
+    padding: 64px;
+}
+
+.ai-cv-landingsection{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+.ai-cv-intro-tagline1{
+    display: flex;
+    justify-content: center;
+}
+.ai-cv-intro-subtagline{
+    font-size: 24px;
+    padding-top: 8px;
+    /* color: dimgrey; */
+}
+
+.ai-cv-feature-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+}
+.ai-cv-feature-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ai-cv-card-dist{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}

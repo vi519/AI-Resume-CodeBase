@@ -1,0 +1,17 @@
+.ai-cv-portal{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.ai-cv-mysidebarpages{
+    width:30%;
+    background-color: aliceblue;
+    height: max-content;
+    height: 100vh;
+    
+}
+
+.ai-cv-previewpages{
+    width:70%
+}

@@ -1,0 +1,28 @@
+.ai-cv-footer-section{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    padding: 16px;
+    background-color: cadetblue;
+}
+
+.ai-cv-footer-footertext{
+    font-size: 40px;
+    padding-bottom: 8px;
+    color: white;
+}
+.ai-cv-footer-footersubtext{
+    font-size: 32px;
+    color: white;
+}
+
+.ai-cv-foot-stopper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    gap: 4px;
+    font-size: 24PX;
+    color: dimgrey;
+}
