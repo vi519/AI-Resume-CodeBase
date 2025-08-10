@@ -8,10 +8,31 @@
 }
 
 .ai-cv-headline-1{
-    color:black;
     font-size: 28px;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  -webkit-text-fill-color: transparent; /* For Safari/Chrome */
+  background-clip: text; /* For Firefox */
+  color: transparent; /* Fallback */
+  font-weight: 900;
 }
 .ai-cv-headline-2{
-    color:brown;
     font-size: 28px;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  -webkit-text-fill-color: transparent; /* For Safari/Chrome */
+  background-clip: text; /* For Firefox */
+  color: transparent; /* Fallback */
+  font-weight: 900;
+}
+
+.ai-cv-headline3{
+background: linear-gradient(0deg,rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+font-size: 24px;
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  -webkit-text-fill-color: transparent; /* For Safari/Chrome */
+  background-clip: text; /* For Firefox */
+  color: transparent; /* Fallback */
+  font-weight: 900;
+  padding-left: 12px;
 }

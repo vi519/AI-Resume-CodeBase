@@ -1,0 +1,7 @@
+export const  personaldetails="Personal Details"
+export const  experience="Experience"
+export const  skills="Skills"
+export const  education="Education"
+export const  projects="Projects"
+export const  cnc="Course and Certificate"
+export const  professionallinks="Professional Links"
