@@ -1,3 +1,31 @@
-.ai-cv-accordian{
+.ai-cv-accordian {
     padding: 8px;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth; /* optional for smooth scrolling */
+    padding-bottom: 16px; /* extra space for last element */
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 #fafafa; /* thumb | track */
+}
+
+/* Chrome, Edge, Safari */
+.ai-cv-accordian::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ai-cv-accordian::-webkit-scrollbar-track {
+    background: #fafafa; /* Light track */
+    border-radius: 10px;
+}
+
+.ai-cv-accordian::-webkit-scrollbar-thumb {
+    background: #d4d4d4; /* Light grey thumb */
+    border-radius: 10px;
+    border: 2px solid #fafafa; /* Creates spacing effect */
+}
+
+.ai-cv-accordian::-webkit-scrollbar-thumb:hover {
+    background: #bfbfbf; /* Slightly darker on hover */
 }
