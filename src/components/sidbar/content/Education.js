@@ -1,26 +1,25 @@
 "use client"
-import { Button, InputAdornment, TextField, Box, Checkbox, IconButton } from '@mui/material';
+import { Button, InputAdornment, TextField, Box, IconButton } from '@mui/material';
 import React, { useState } from 'react';
-import "@/styles/components/experience.css";
+import "@/styles/components/education.css";
 import { addMore } from '@/constants/sidebarconstant';
-import WorkIcon from '@mui/icons-material/Work';
+import SchoolIcon from '@mui/icons-material/School';
+import DeleteIcon from '@mui/icons-material/Delete';
 import dayjs from "dayjs";
 import DoubleDatePickerWrapper from '@/wrappper/DoubleDatePickerWrapper';
 import { useSelector, useDispatch } from 'react-redux';
-import { addExperience, deleteExperience } from '@/redux/resumeSlice';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { addEducation, deleteEducation } from '@/redux/resumeSlice';
 
-function Experience() {
+function Education() {
   const dispatch = useDispatch();
-  const experiences = useSelector((state) => state.resume.experience);
+  const educations = useSelector((state) => state.resume.education);
   
   const [formData, setFormData] = useState({
-    jobTitle: '',
-    companyName: '',
+    institution: '',
+    degree: '',
+    field: '',
+    grade: '',
     location: '',
-    current: false,
-    description: '',
-    additionalNotes: '',
     startDate: dayjs(),
     endDate: dayjs()
   });
@@ -33,7 +32,7 @@ function Experience() {
   };
 
   const handleSubmit = () => {
-    dispatch(addExperience({
+    dispatch(addEducation({
       id: Date.now().toString(),
       ...formData,
       startDate: formData.startDate.format("YYYY-MM-DD"),
@@ -41,24 +40,23 @@ function Experience() {
     }));
     // Reset form
     setFormData({
-      jobTitle: '',
-      companyName: '',
+      institution: '',
+      degree: '',
+      field: '',
+      grade: '',
       location: '',
-      current: false,
-      description: '',
-      additionalNotes: '',
       startDate: dayjs(),
       endDate: dayjs()
     });
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteExperience(id));
+    dispatch(deleteEducation(id));
   };
 
   return (
     <div>
-      <div className="ai-cv-experience-content">
+      <div className="ai-cv-education-content">
         <Button 
           variant="contained" 
           color="success" 
@@ -69,17 +67,17 @@ function Experience() {
         </Button>
       </div>
 
-      <Box className="ai-cv-experience-textbox">
+      <Box className="ai-cv-education-textbox">
         <TextField
-          label="Job Title"
+          label="Institution Name"
           variant="standard"
           fullWidth
-          value={formData.jobTitle}
-          onChange={(e) => handleInputChange('jobTitle', e.target.value)}
+          value={formData.institution}
+          onChange={(e) => handleInputChange('institution', e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <SchoolIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -87,17 +85,17 @@ function Experience() {
         />
       </Box>
 
-      <Box className="ai-cv-experience-textbox">
+      <Box className="ai-cv-education-textbox">
         <TextField
-          label="Company Name"
+          label="Degree"
           variant="standard"
           fullWidth
-          value={formData.companyName}
-          onChange={(e) => handleInputChange('companyName', e.target.value)}
+          value={formData.degree}
+          onChange={(e) => handleInputChange('degree', e.target.value)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <SchoolIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -105,7 +103,43 @@ function Experience() {
         />
       </Box>
 
-      <Box className="ai-cv-experience-textbox">
+      <Box className="ai-cv-education-textbox">
+        <TextField
+          label="Field of Study"
+          variant="standard"
+          fullWidth
+          value={formData.field}
+          onChange={(e) => handleInputChange('field', e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SchoolIcon color="action" />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ maxWidth: "500px" }}
+        />
+      </Box>
+
+      <Box className="ai-cv-education-textbox">
+        <TextField
+          label="Grade/CGPA"
+          variant="standard"
+          fullWidth
+          value={formData.grade}
+          onChange={(e) => handleInputChange('grade', e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SchoolIcon color="action" />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ maxWidth: "500px" }}
+        />
+      </Box>
+
+      <Box className="ai-cv-education-textbox">
         <TextField
           label="Location"
           variant="standard"
@@ -115,33 +149,7 @@ function Experience() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ maxWidth: "500px" }}
-        />
-      </Box>
-
-      <Checkbox
-        checked={formData.current}
-        onChange={(e) => handleInputChange('current', e.target.checked)}
-        inputProps={{ 'aria-label': 'controlled' }}
-      />
-
-      <Box className="ai-cv-experience-textbox">
-        <TextField
-          label="Work Description"
-          multiline
-          rows={4}
-          variant="standard"
-          fullWidth
-          value={formData.description}
-          onChange={(e) => handleInputChange('description', e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <SchoolIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -160,10 +168,10 @@ function Experience() {
         />
       </div>
 
-      {/* Display existing experiences */}
-      {experiences.map((exp) => (
+      {/* Display existing education entries */}
+      {educations.map((edu) => (
         <Box 
-          key={exp.id} 
+          key={edu.id} 
           sx={{ 
             mt: 2, 
             p: 2, 
@@ -171,11 +179,11 @@ function Experience() {
             borderRadius: 1,
             maxWidth: "500px",
             margin: "20px auto",
-            position: 'relative'  // Add this for absolute positioning of delete button
+            position: 'relative'
           }}
         >
           <IconButton
-            onClick={() => handleDelete(exp.id)}
+            onClick={() => handleDelete(edu.id)}
             sx={{
               position: 'absolute',
               right: 8,
@@ -185,14 +193,15 @@ function Experience() {
           >
             <DeleteIcon />
           </IconButton>
-          <h3>{exp.jobTitle} at {exp.companyName}</h3>
-          <p>{exp.location}</p>
-          <p>{exp.startDate} - {exp.current ? 'Present' : exp.endDate}</p>
-          <p>{exp.description}</p>
+          <h3>{edu.degree} in {edu.field}</h3>
+          <h4>{edu.institution}</h4>
+          <p>{edu.location}</p>
+          <p>Grade: {edu.grade}</p>
+          <p>{edu.startDate} - {edu.endDate}</p>
         </Box>
       ))}
     </div>
   );
 }
 
-export default Experience;
+export default Education;

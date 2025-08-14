@@ -1,8 +1,54 @@
+"use client"
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Box, Button } from '@mui/material'
+import DownloadIcon from '@mui/icons-material/Download'
 
 function Preview() {
+  const resumeData = useSelector((state) => state.resume)
+
+  const handleDownloadJSON = () => {
+    const jsonString = JSON.stringify(resumeData, null, 2)
+    const blob = new Blob([jsonString], { type: 'application/json' })
+    const href = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = href
+    link.download = `resume-data-${new Date().toISOString()}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(href)
+  }
+
   return (
-    <div>Preview</div>
+    <Box sx={{ p: 3 }}>
+      <Button 
+        variant="contained" 
+        startIcon={<DownloadIcon />}
+        onClick={handleDownloadJSON}
+        sx={{ mb: 2 }}
+      >
+        Download Resume JSON
+      </Button>
+      
+      <Box 
+        component="pre"
+        sx={{
+          bgcolor: 'background.paper',
+          p: 2,
+          borderRadius: 1,
+          overflow: 'auto',
+          maxHeight: 'calc(100vh - 100px)',
+          border: '1px solid',
+          borderColor: 'divider',
+          '&:hover': {
+            boxShadow: 1
+          }
+        }}
+      >
+        {JSON.stringify(resumeData, null, 2)}
+      </Box>
+    </Box>
   )
 }
 

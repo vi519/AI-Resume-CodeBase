@@ -8,11 +8,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 import Textarea from '@mui/joy/Textarea';
 import "@/styles/components/cvaccordian.css"
-import { cnc, education, experience, personaldetails, projects, skills,professionallinks} from '@/constants/cvaccordian';
+import { cnc, education, experience, personaldetails, projects, skills,professionallinks, achievements} from '@/constants/cvaccordian';
 import PersonalDetails from './content/PersonalDetails';
 import SocialNetworkLinks from './content/SocialNetworkLinks';
 import Experience from './content/Experience';
 import Skills from './content/Skills';
+import Education from './content/Education';
+import Projects from './content/Projects';
+import Certifications from './content/Certifications';
+import Achievements from './content/Achievements';
 
 function CVAccordian() {
   return (
@@ -59,7 +63,7 @@ function CVAccordian() {
       <Typography component="span">{education}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Experience/> </AccordionDetails>
+    <Education/> </AccordionDetails>
   </Accordion> 
   <Accordion>
     <AccordionSummary
@@ -81,8 +85,7 @@ function CVAccordian() {
       <Typography component="span">{projects}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Textarea name="Outlined" placeholder="Enter your name" variant="outlined" /> 
-    <Textarea name="Outlined" placeholder=  "Enter your name" variant="outlined" /> </AccordionDetails>
+<Projects/> </AccordionDetails>
   </Accordion> 
   <Accordion>
     <AccordionSummary
@@ -93,8 +96,19 @@ function CVAccordian() {
       <Typography component="span">{cnc}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Textarea name="Outlined" placeholder="Enter your name" variant="outlined" /> 
-    <Textarea name="Outlined" placeholder=  "Enter your name" variant="outlined" /> </AccordionDetails>
+        <Certifications/> </AccordionDetails>
+  </Accordion> 
+  <Accordion>
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel1-content"
+      id="panel1-header"
+    >
+      <Typography component="span">{achievements}</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Achievements/>
+    </AccordionDetails>
   </Accordion> </div>
   )
 }

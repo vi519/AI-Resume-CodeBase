@@ -1,0 +1,90 @@
+"use client"
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAchievement, deleteAchievement } from '@/redux/resumeSlice';
+import { TextField, Button, Box, IconButton, InputAdornment } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+
+function Achievements() {
+  const dispatch = useDispatch();
+  const achievements = useSelector((state) => state.resume.achievements);
+
+  const [achievement, setAchievement] = useState('');
+
+  const handleAddAchievement = () => {
+    if (achievement.trim()) {
+      dispatch(addAchievement({
+        id: Date.now().toString(),
+        description: achievement
+      }));
+      setAchievement('');
+    }
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteAchievement(id));
+  };
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 600, margin: '0 auto' }}>
+        <TextField
+          label="Achievement"
+          variant="standard"
+          fullWidth
+          multiline
+          rows={3}
+          value={achievement}
+          onChange={(e) => setAchievement(e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmojiEventsIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddAchievement}
+          fullWidth
+        >
+          Add Achievement
+        </Button>
+      </Box>
+
+      {achievements.map((item) => (
+        <Box
+          key={item.id}
+          sx={{
+            mt: 3,
+            p: 2,
+            border: '1px solid #ddd',
+            borderRadius: 1,
+            position: 'relative',
+            maxWidth: 600,
+            margin: '20px auto'
+          }}
+        >
+          <IconButton
+            onClick={() => handleDelete(item.id)}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: 'error.main'
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+          <p>{item.description}</p>
+        </Box>
+      ))}
+    </div>
+  );
+}
+
+export default Achievements;

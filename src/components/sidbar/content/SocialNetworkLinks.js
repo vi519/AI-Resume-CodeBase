@@ -1,23 +1,41 @@
 // ExampleTextFieldsWithIcons.jsx
+"use client"
 import React from "react";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfessionalLinks } from '@/redux/resumeSlice';
 
-// icons (install @mui/icons-material if you haven't)
+// icons
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import LanguageIcon from "@mui/icons-material/Language"; // portfolio / website
-import CodeIcon from "@mui/icons-material/Code"; // leetcode or code profile
+import LanguageIcon from "@mui/icons-material/Language";
+import CodeIcon from "@mui/icons-material/Code";
 
 export default function SocialNetworkLinks() {
+  const dispatch = useDispatch();
+  const professionalLinks = useSelector((state) => state.resume.professionalLinks);
+
+  const handleLinkChange = (field, value) => {
+    dispatch(updateProfessionalLinks({
+      ...professionalLinks,
+      [field]: value
+    }));
+  };
+
+  const openLink = (url) => {
+    if (url) window.open(url, '_blank');
+  };
+
   return (
     <div style={{ maxWidth: 700, margin: "0 auto", display: "grid", gap: 12 }}>
-      {/* GitHub */}
       <TextField
         label="GitHub"
         variant="standard"
         fullWidth
+        value={professionalLinks.github}
+        onChange={(e) => handleLinkChange('github', e.target.value)}
         placeholder="https://github.com/your-username"
         InputProps={{
           startAdornment: (
@@ -27,26 +45,25 @@ export default function SocialNetworkLinks() {
           ),
           endAdornment: (
             <InputAdornment position="end">
-              {/* optional clickable icon — opens link or triggers validation */}
               <IconButton
                 aria-label="open github"
                 edge="end"
-               
+                onClick={() => openLink(professionalLinks.github)}
                 size="large"
               >
-                {/* keep small so it doesn't dominate */}
-               
+                <LanguageIcon fontSize="small" />
               </IconButton>
             </InputAdornment>
           ),
         }}
       />
 
-      {/* LinkedIn */}
       <TextField
         label="LinkedIn"
         variant="standard"
         fullWidth
+        value={professionalLinks.linkedin}
+        onChange={(e) => handleLinkChange('linkedin', e.target.value)}
         placeholder="https://www.linkedin.com/in/your-name"
         InputProps={{
           startAdornment: (
@@ -54,14 +71,27 @@ export default function SocialNetworkLinks() {
               <LinkedInIcon />
             </InputAdornment>
           ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="open linkedin"
+                edge="end"
+                onClick={() => openLink(professionalLinks.linkedin)}
+                size="large"
+              >
+                <LanguageIcon fontSize="small" />
+              </IconButton>
+            </InputAdornment>
+          ),
         }}
       />
 
-      {/* Portfolio / Website */}
       <TextField
         label="Portfolio"
         variant="standard"
         fullWidth
+        value={professionalLinks.portfolio}
+        onChange={(e) => handleLinkChange('portfolio', e.target.value)}
         placeholder="https://your-portfolio.com"
         InputProps={{
           startAdornment: (
@@ -69,19 +99,44 @@ export default function SocialNetworkLinks() {
               <LanguageIcon />
             </InputAdornment>
           ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="open portfolio"
+                edge="end"
+                onClick={() => openLink(professionalLinks.portfolio)}
+                size="large"
+              >
+                <LanguageIcon fontSize="small" />
+              </IconButton>
+            </InputAdornment>
+          ),
         }}
       />
 
-      {/* LeetCode or code profile */}
       <TextField
         label="Coding Profile"
         variant="standard"
         fullWidth
+        value={professionalLinks.codingProfile}
+        onChange={(e) => handleLinkChange('codingProfile', e.target.value)}
         placeholder="https://leetcode.com/your-username"
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <CodeIcon />
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="open coding profile"
+                edge="end"
+                onClick={() => openLink(professionalLinks.codingProfile)}
+                size="large"
+              >
+                <LanguageIcon fontSize="small" />
+              </IconButton>
             </InputAdornment>
           ),
         }}
