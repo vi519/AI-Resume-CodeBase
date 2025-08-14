@@ -11,6 +11,8 @@ import "@/styles/components/cvaccordian.css"
 import { cnc, education, experience, personaldetails, projects, skills,professionallinks} from '@/constants/cvaccordian';
 import PersonalDetails from './content/PersonalDetails';
 import SocialNetworkLinks from './content/SocialNetworkLinks';
+import Experience from './content/Experience';
+import Skills from './content/Skills';
 
 function CVAccordian() {
   return (
@@ -31,7 +33,7 @@ function CVAccordian() {
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1-content"
       id="panel1-header"
-    >
+    >   
       <Typography component="span">{professionallinks}</Typography>
     </AccordionSummary>
     <AccordionDetails>
@@ -46,8 +48,7 @@ function CVAccordian() {
       <Typography component="span">{experience}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Textarea name="Outlined" placeholder="Enter your name" variant="outlined" /> 
-    <Textarea name="Outlined" placeholder=  "Enter your name" variant="outlined" /> </AccordionDetails>
+    <Experience/></AccordionDetails>
   </Accordion>
   <Accordion>
     <AccordionSummary
@@ -58,8 +59,7 @@ function CVAccordian() {
       <Typography component="span">{education}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Textarea name="Outlined" placeholder="Enter your name" variant="outlined" /> 
-    <Textarea name="Outlined" placeholder=  "Enter your name" variant="outlined" /> </AccordionDetails>
+    <Experience/> </AccordionDetails>
   </Accordion> 
   <Accordion>
     <AccordionSummary
@@ -70,8 +70,7 @@ function CVAccordian() {
       <Typography component="span">{skills}</Typography>
     </AccordionSummary>
     <AccordionDetails>
-    <Textarea name="Outlined" placeholder="Enter your name" variant="outlined" /> 
-    <Textarea name="Outlined" placeholder=  "Enter your name" variant="outlined" /> </AccordionDetails>
+    <Skills/></AccordionDetails>
   </Accordion> 
   <Accordion>
     <AccordionSummary
