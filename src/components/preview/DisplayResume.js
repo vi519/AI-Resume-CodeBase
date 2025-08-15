@@ -1,0 +1,243 @@
+"use client"
+import React from 'react';
+import { useSelector } from 'react-redux';
+import '@/styles/components/displayresume.css';
+import CallIcon from '@mui/icons-material/Call';
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import LanguageIcon from "@mui/icons-material/Language";
+import CodeIcon from "@mui/icons-material/Code";
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import { PROFILE_LABELS, LINK_STYLES, CSS_CLASSES } from '@/constants/resumeConstants';
+import html2pdf from 'html2pdf.js';
+
+function DisplayResume() {
+    const resumeData = useSelector((state) => state.resume);
+
+    const downloadPDF = () => {
+        const element = document.getElementById('resume-content');
+        const opt = {
+            margin: [0.1, 0.1], // Reduce margins [top&bottom, left&right]
+            filename: `${resumeData?.personalDetails?.firstName}_${resumeData?.personalDetails?.lastName}_Resume.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2,
+                useCORS: true,
+                logging: false
+            },
+            jsPDF: { 
+                unit: 'in', 
+                format: 'letter', 
+                orientation: 'portrait',
+                compress: true
+            }
+        };
+
+        html2pdf().set(opt).from(element).save();
+    };
+
+    return (
+        <>
+            <button 
+                onClick={downloadPDF}
+                className="download-btn"
+            >
+                Download PDF
+            </button>
+            <div id="resume-content" className={CSS_CLASSES.section}>
+                <div className={CSS_CLASSES.heading}>
+                    <div className={CSS_CLASSES.headerName}>
+                        <div>{resumeData?.personalDetails?.firstName || ''}</div>
+                        <div>{resumeData?.personalDetails?.lastName || ''}</div>
+                    </div>
+                    <div className={CSS_CLASSES.sectionTitle}>
+                        {(resumeData?.personalDetails?.countryCode || resumeData?.personalDetails?.contactNumber) && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <div><CallIcon /></div>
+                                <div>{resumeData?.personalDetails?.countryCode} {resumeData?.personalDetails?.contactNumber}</div>
+                            </div>
+                        )}
+                        {resumeData?.personalDetails?.emailAddress && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <div><EmailIcon /></div>
+                                <div>{resumeData?.personalDetails?.emailAddress}</div>
+                            </div>
+                        )}
+                        {resumeData?.professionalLinks?.github && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <a
+                                    href={resumeData.professionalLinks.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={LINK_STYLES.container}
+                                >
+                                    <GitHubIcon style={LINK_STYLES.icon} />
+                                    <span>{PROFILE_LABELS.GITHUB}</span>
+                                </a>
+                            </div>
+                        )}
+                        {resumeData?.professionalLinks?.linkedin && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <a
+                                    href={resumeData.professionalLinks.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={LINK_STYLES.container}
+                                >
+                                    <LinkedInIcon style={LINK_STYLES.icon} />
+                                    <span>{PROFILE_LABELS.LINKEDIN}</span>
+                                </a>
+                            </div>
+                        )}
+                        {resumeData?.professionalLinks?.portfolio && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <a
+                                    href={resumeData.professionalLinks.portfolio}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={LINK_STYLES.container}
+                                >
+                                    <LanguageIcon style={LINK_STYLES.icon} />
+                                    <span>{PROFILE_LABELS.PORTFOLIO}</span>
+                                </a>
+                            </div>
+                        )}
+                        {resumeData?.professionalLinks?.codingProfile && (
+                            <div className={CSS_CLASSES.subheadingFlex}>
+                                <a
+                                    href={resumeData.professionalLinks.codingProfile}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={LINK_STYLES.container}
+                                >
+                                    <CodeIcon style={LINK_STYLES.icon} />
+                                    <span>{PROFILE_LABELS.CODING}</span>
+                                </a>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            <div>Experience</div>
+                        </div>
+
+                        {resumeData?.experience?.map((exp) => (
+                            <div key={exp.id} className='ai-cv-experience-company-section'>
+                                <div className='ai-cv-experience-company'>
+                                    <div className='ai-cv-experience-company-name'>{exp.jobTitle}</div>
+                                    <div className='ai-cv-experience-company-designation'>
+                                        <i>{exp.companyName}</i>
+                                    </div>
+                                    <div className='ai-cv-experience-company-description'>
+                                        {exp.description.split('\n').map((point, index) => (
+                                            <p key={index}>{point.trim()}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='ai-cv-experience-company-designation'>
+                                    {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            <div>Education</div>
+                        </div>
+
+                        {resumeData?.education?.map((edu) => (
+                            <div key={edu.id} className='ai-cv-experience-company-section'>
+                                <div className='ai-cv-experience-company'>
+                                    <div className='ai-cv-experience-company-name'>{edu?.institution}</div>
+                                    <div className='ai-cv-experience-company-designation'>
+                                        <i>{edu?.degree}</i>
+                                    </div>
+                                    <div className='ai-cv-experience-company-description'>
+                                    {edu?.field }
+                                    </div>
+                                </div>
+                                <div className='ai-cv-experience-company-designation'>
+                                {edu?.grade}<br/>
+                                    {edu?.startDate} - {edu?.current ? 'Present' : edu?.endDate}
+                                    
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            <div>Projects</div>
+                        </div>
+
+                        {resumeData?.projects?.map((proj) => (
+                            <div key={proj.id} className='ai-cv-experience-company-section'>
+                                <div className='ai-cv-experience-company'>
+                                    <div className='ai-cv-experience-company-name'>{proj.title}</div>
+                                   
+                                    <div className='ai-cv-experience-company-description'>
+                                        {proj.description.split('\n').map((point, index) => (
+                                            <p key={index}>{point.trim()}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='ai-cv-experience-company-designation'>
+                                    {proj?.link}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                   
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            <div>Course and Certificate</div>
+                        </div>
+
+                        {resumeData?.certifications?.map((cert) => (
+                            <div key={cert.id} className='ai-cv-experience-company-section'>
+                                <div className='ai-cv-experience-company'>
+                                    <div className='ai-cv-experience-company-name'>{cert?.name}</div>
+                                   
+                                    <div className='ai-cv-experience-company-description'>
+                                        {cert?.issuingOrganization?.split('\n').map((point, index) => (
+                                            <p key={index}>{point?.trim()}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='ai-cv-experience-company-designation'>
+                                    {cert?.credentialLink}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            <EmojiEventsIcon style={LINK_STYLES.icon} />
+                            <div>Achievements</div>
+                        </div>
+
+                        {resumeData?.achievements?.length > 0 && (
+                            <div className='ai-cv-achievements-container'>
+                                {resumeData.achievements.map((achievement) => (
+                                    <div key={achievement.id} className='ai-cv-achievement-item'>
+                                        <div className='ai-cv-achievement-content'>
+                                            <div className='ai-cv-achievement-description'>
+                                                • {achievement.description}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default DisplayResume;

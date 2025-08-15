@@ -1,0 +1,167 @@
+/* Base settings */
+.ai-cv-dr-section {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;  /* Changed to lighter font */
+    font-size: 10pt;
+    color: #2c3e50;  /* Softer color than pure black */
+    margin: 0;
+    padding: 10px;
+    font-weight: 300;  /* Lighter font weight */
+    line-height: 1.6;
+}
+
+/* Header (Name) - CMCSC10 (24.79pt) */
+.header-name {
+    display: flex;
+    flex-direction: row;
+    gap:12px;
+    justify-content: center ;
+    font-size: 24pt; /* Approx 24.79pt */
+    font-weight: 400;  /* Reduced from default bold */
+    color: #34495e;
+}
+
+/* Section Title - CMBX12 (11.96pt) */
+.section-title {
+    display: FLEX;
+    font-size: 12pt; /* Matches 11.96pt */
+   gap:8px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Subheading or Company Name - CMBX10 (9.96pt Bold) */
+.subheading {
+    font-size: 11pt; /* slightly larger for emphasis */
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+
+/* Italics - CMTI10 */
+.italic {
+    font-style: italic;
+}
+
+/* Bullet points - CMSY6 (~5.98pt) */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 10pt;
+}
+
+/* Contact info with Font Awesome icons */
+.contact-info i {
+    margin-right: 6px;
+    color: #444;
+    font-size: 12px;
+}
+
+.ai-cv-dr-subheading-flex{
+    display:flex;
+    flex-direction: row;
+    gap:4px;
+}
+
+.ai-cv-dr-experience-item,
+.ai-cv-dr-education-item {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 2px solid #e0e0e0;
+}
+
+.ai-cv-dr-item-header {
+    margin-bottom: 8px;
+}
+
+.ai-cv-dr-item-header h3 {
+    margin: 0;
+    color: #2196f3;
+}
+
+.ai-cv-dr-item-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.ai-cv-dr-description {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.ai-cv-dr-experience-heading {
+    width: 100%;
+    border-bottom: 1px solid #bdc3c7;  /* Lighter border */
+    font-size: 12pt;
+    font-weight: 500;  /* Reduced from bold */
+    color: #2c3e50;
+    /* padding-bottom: 6px; */
+
+  }
+
+
+.ai-cv-experience-company-section{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    overflow-x: hidden;
+    max-width: 100%;
+    /* height: 100vh; */
+    /* padding: 15px; */
+    /* margin: 10px 0; */
+}
+.ai-cv-experience-company{
+    display: flex;
+    flex-direction: column;
+}
+.ai-cv-experience-company-name{
+    font-size: 10.5pt;
+    font-weight: 500;  /* Reduced from bold */
+    color: #34495e;
+    
+}
+.ai-cv-experience-company-designation{
+    font-size: 10pt;
+    font-weight: 300;
+    color: #7f8c8d;
+}
+.ai-cv-experience-company-description {
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  font-weight: 300;
+  line-height: 1.4;  /* Increased from 0.5 */
+  color: #2c3e50;
+}
+
+.ai-cv-experience-company-description p {
+  margin-bottom: 6px;
+  line-height: 1.5;  /* Increased from 0.9 */
+  font-weight: 300;
+  text-align: justify;
+}
+
+/* Download Button */
+.download-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.download-btn:hover {
+    background-color: #1976d2;
+}

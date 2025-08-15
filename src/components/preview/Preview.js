@@ -3,6 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Box, Button } from '@mui/material'
 import DownloadIcon from '@mui/icons-material/Download'
+import DisplayResume from './DisplayResume'
 
 function Preview() {
   const resumeData = useSelector((state) => state.resume)
@@ -21,6 +22,10 @@ function Preview() {
   }
 
   return (
+
+    <>
+  
+
     <Box sx={{ p: 3 }}>
       <Button 
         variant="contained" 
@@ -46,9 +51,14 @@ function Preview() {
           }
         }}
       >
-        {JSON.stringify(resumeData, null, 2)}
+
+        <DisplayResume resumeData={JSON.stringify(resumeData, null, 2)} />
+     
       </Box>
     </Box>
+    </>
+    
+    
   )
 }
 

@@ -2,8 +2,8 @@ import Providers from './Provider';
 import './globals.css';
 
 export const metadata = {
-  title: 'My App',
-  description: 'Next.js with Redux',
+  title: 'Smart Resume',
+  description: '',
 };
 
 export default function RootLayout({ children }) {
