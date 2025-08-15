@@ -1,12 +1,12 @@
 /* Base settings */
 .ai-cv-dr-section {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;  /* Changed to lighter font */
+   font-family: "Cormorant Garamond", serif; /* Changed to lighter font */
     font-size: 10pt;
     color: #2c3e50;  /* Softer color than pure black */
     margin: 0;
     padding: 10px;
     font-weight: 300;  /* Lighter font weight */
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* Header (Name) - CMCSC10 (24.79pt) */
@@ -97,8 +97,8 @@ ul {
 .ai-cv-dr-experience-heading {
     width: 100%;
     border-bottom: 1px solid #bdc3c7;  /* Lighter border */
-    font-size: 12pt;
-    font-weight: 500;  /* Reduced from bold */
+    font-size: 13pt;
+    font-weight: bold;  /* Reduced from bold */
     color: #2c3e50;
     /* padding-bottom: 6px; */
 

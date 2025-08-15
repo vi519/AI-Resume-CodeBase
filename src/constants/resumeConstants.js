@@ -1,8 +1,8 @@
 export const PROFILE_LABELS = {
-  GITHUB: 'GitHub Profile',
-  LINKEDIN: 'LinkedIn Profile',
+  GITHUB: 'GitHub',
+  LINKEDIN: 'LinkedIn',
   PORTFOLIO: 'Portfolio',
-  CODING: 'Coding Profile'
+  CODING: 'Coding'
 };
 
 export const LINK_STYLES = {

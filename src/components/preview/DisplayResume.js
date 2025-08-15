@@ -103,7 +103,7 @@ function DisplayResume() {
                                 </a>
                             </div>
                         )}
-                        {resumeData?.professionalLinks?.codingProfile && (
+                        {/* {resumeData?.professionalLinks?.codingProfile && (
                             <div className={CSS_CLASSES.subheadingFlex}>
                                 <a
                                     href={resumeData.professionalLinks.codingProfile}
@@ -115,7 +115,7 @@ function DisplayResume() {
                                     <span>{PROFILE_LABELS.CODING}</span>
                                 </a>
                             </div>
-                        )}
+                        )} */}
                     </div>
 
                     <div className="ai-cv-dr-experience">
@@ -132,7 +132,7 @@ function DisplayResume() {
                                     </div>
                                     <div className='ai-cv-experience-company-description'>
                                         {exp.description.split('\n').map((point, index) => (
-                                            <p key={index}>{point.trim()}</p>
+                                            <div key={index}>{point.trim()}</div>
                                         ))}
                                     </div>
                                 </div>
@@ -216,7 +216,7 @@ function DisplayResume() {
 
                     <div className="ai-cv-dr-experience">
                         <div className="ai-cv-dr-experience-heading">
-                            <EmojiEventsIcon style={LINK_STYLES.icon} />
+                            {/* <EmojiEventsIcon style={LINK_STYLES.icon} /> */}
                             <div>Achievements</div>
                         </div>
 
