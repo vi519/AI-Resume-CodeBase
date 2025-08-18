@@ -15,7 +15,6 @@ import { SkillSetWrapper } from '@/wrappper/SkillSetWrapper';
 
 function DisplayResume() {
     const resumeData = useSelector((state) => state.resume);
-console.log(resumeData)
     const downloadPDF = () => {
         const element = document.getElementById('resume-content');
         const opt = {
@@ -41,13 +40,7 @@ console.log(resumeData)
 
     return (
         <>
-        {/* <div>{JSON.stringify(resumeData)}</div> */}
-            <button 
-                onClick={downloadPDF}
-                className="download-btn"
-            >
-                Download PDF
-            </button>
+       
             <div id="resume-content" className={CSS_CLASSES.section}>
                 <div className={CSS_CLASSES.heading}>
                     <div className={CSS_CLASSES.headerName}>
@@ -233,7 +226,7 @@ console.log(resumeData)
                                     <div key={achievement.id} className='ai-cv-achievement-item'>
                                         <div className='ai-cv-achievement-content'>
                                             <div className='ai-cv-achievement-description'>
-                                                • {achievement.description}
+                                                {`• ${achievement.description}`}
                                             </div>
                                         </div>
                                     </div>

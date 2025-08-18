@@ -145,7 +145,7 @@ function Projects() {
         />
 
         <TextField
-          label="GitHub Link"
+          label="Codebase Link"
           variant="standard"
           fullWidth
           value={formData.githubLink}
@@ -153,26 +153,38 @@ function Projects() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <GitHubIcon />
+                <CodeIcon />
               </InputAdornment>
             ),
           }}
         />
 
-        <DoubleDatePickerWrapper
+        {/* <DoubleDatePickerWrapper
           startDate={formData.startDate}
           endDate={formData.endDate}
           onStartChange={(date) => handleInputChange('startDate', date)}
           onEndChange={(date) => handleInputChange('endDate', date)}
           startLabel="Start Date"
           endLabel="End Date"
-        />
+        /> */}
 
         <Button
           variant="contained"
           color="primary"
           onClick={handleSubmit}
           fullWidth
+          sx={{
+            minWidth: 180,
+            py: 1,
+            fontWeight: 500,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: '1px solid #000'
+            }
+          }}
         >
           Add Project
         </Button>
@@ -204,7 +216,7 @@ function Projects() {
             <DeleteIcon />
           </IconButton>
           <h3>{project.title}</h3>
-          <p>{project.description}</p>
+          {/* <p>{project.description}</p>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, my: 1 }}>
             {project.technologies.map((tech, index) => (
               <Chip key={index} label={tech} size="small" />
@@ -224,7 +236,7 @@ function Projects() {
           </Box>
           <p>
             {project.startDate} - {project.endDate}
-          </p>
+          </p> */}
         </Box>
       ))}
     </div>

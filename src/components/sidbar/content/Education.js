@@ -2,7 +2,7 @@
 import { Button, InputAdornment, TextField, Box, IconButton } from '@mui/material';
 import React, { useState } from 'react';
 import "@/styles/components/education.css";
-import { addMore } from '@/constants/sidebarconstant';
+import { addEdu, addExp, addMore } from '@/constants/sidebarconstant';
 import SchoolIcon from '@mui/icons-material/School';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import BookIcon from '@mui/icons-material/Book';
@@ -165,45 +165,67 @@ function Education() {
 
       {/* Display existing education entries */}
       {educations.map((edu) => (
-        <Box 
-          key={edu.id} 
-          sx={{ 
-            mt: 2, 
-            p: 2, 
-            border: '1px solid #ddd', 
-            borderRadius: 1,
-            maxWidth: "500px",
-            margin: "20px auto",
-            position: 'relative'
-          }}
-        >
-          <IconButton
-            onClick={() => handleDelete(edu.id)}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: 'error.main'
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>
-          <h3>{edu.degree} in {edu.field}</h3>
-          <h4>{edu.institution}</h4>
-          <p>{edu.location}</p>
-          <p>Grade: {edu.grade}</p>
-          <p>{edu.startDate} - {edu.endDate}</p>
-        </Box>
-      ))}
+  <Box 
+    key={edu.id} 
+    sx={{ 
+      mt: 2,
+      px: 1, // 8px left and right
+      py: 0.25, // 2px top and bottom
+      border: '1px solid #ddd', 
+      borderRadius: 1,
+      maxWidth: "500px",
+      margin: "20px auto",
+      position: 'relative'
+    }}
+  >
+    <IconButton
+      onClick={() => handleDelete(edu.id)}
+      sx={{
+        position: 'absolute',
+        right: 8,
+        top: 8,
+        color: 'error.main',
+        marginTop: "2px"
+      }}
+    >
+      <DeleteIcon />
+    </IconButton>
+
+    {/* Truncated text */}
+    <h3
+      style={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '90%' // leave space for delete icon
+      }}
+    >
+      {edu.degree}
+    </h3>
+  </Box>
+))}
+
 
 <div className="ai-cv-education-content">
         <Button 
           variant="contained" 
-          color="success" 
+          color="primary" 
           fullWidth
           onClick={handleSubmit}
+          sx={{
+            minWidth: 180,
+            py: 1,
+            fontWeight: 500,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: '1px solid #000'
+            }
+          }}
         >
-          {addMore}
+          {addEdu}
         </Button>
       </div>
     </div>

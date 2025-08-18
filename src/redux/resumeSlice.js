@@ -5,6 +5,10 @@ const resumeSlice = createSlice({
   name: 'resume',
   initialState: initialResumeData,
   reducers: {
+    loadResume: (state, action) => {
+        // Replace entire state with uploaded JSON
+        return action.payload;
+      },
     updatePersonalDetails: (state, action) => {
       state.personalDetails = { ...state.personalDetails, ...action.payload };
     },
@@ -80,7 +84,8 @@ export const {
   deleteCertification,
   addAchievement,
   deleteAchievement,
-  updateInterests
+  updateInterests,
+  loadResume
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;

@@ -2,7 +2,7 @@
 import { Button, InputAdornment, TextField, Box, Checkbox, IconButton, FormControlLabel } from '@mui/material';
 import React, { useState } from 'react';
 import "@/styles/components/experience.css";
-import { addMore } from '@/constants/sidebarconstant';
+import { addExp, addMore } from '@/constants/sidebarconstant';
 import WorkIcon from '@mui/icons-material/Work';
 import dayjs from "dayjs";
 import DoubleDatePickerWrapper from '@/wrappper/DoubleDatePickerWrapper';
@@ -175,7 +175,8 @@ function Experience() {
             borderRadius: 1,
             maxWidth: "500px",
             margin: "20px auto",
-            position: 'relative'  // Add this for absolute positioning of delete button
+            position: 'relative',
+            padding:"4px 16px"  // Add this for absolute positioning of delete button
           }}
         >
           <IconButton
@@ -199,11 +200,23 @@ function Experience() {
 <div className="ai-cv-experience-content">
         <Button 
           variant="contained" 
-          color="success" 
+          color="primary" 
           fullWidth
           onClick={handleSubmit}
+          sx={{
+            minWidth: 180,
+            py: 1,
+            fontWeight: 500,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: '1px solid #000'
+            }
+          }}
         >
-          {addMore}
+          {addExp}
         </Button>
       </div>
     </div>

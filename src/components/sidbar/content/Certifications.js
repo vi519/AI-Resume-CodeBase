@@ -104,6 +104,18 @@ function Certifications() {
           color="primary"
           onClick={handleSubmit}
           fullWidth
+          sx={{
+            minWidth: 180,
+            py: 1,
+            fontWeight: 500,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: '1px solid #000'
+            }
+          }}
         >
           Add Certification
         </Button>

@@ -128,8 +128,8 @@ ul {
     
 }
 .ai-cv-experience-company-designation-sec{
-    font-size: 10pt;
-    font-weight: 300;
+    font-size: 12pt;
+    font-weight: 700;
     color: black;
     white-space: nowrap;
     max-width: none;
@@ -179,4 +179,8 @@ ul {
 .title-skill{
     font-size: 14px;
     font-weight: 900;
+}
+
+.css-12ylolc{
+    overflow: hidden !important;
 }

@@ -92,7 +92,19 @@ function SkillCategoryWrapper({ category, placeholder, title }) {
           variant="contained"
           color="primary"
           onClick={handleAddSkill}
-          sx={{ borderRadius: 2 }}
+     
+          sx={{
+            borderRadius: 2,
+            py: 1,
+            fontWeight: 500,
+            backgroundColor: '#000',
+            color: '#fff',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#000',
+              border: '1px solid #000'
+            }
+          }}
         >
           Add
         </Button>

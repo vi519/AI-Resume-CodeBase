@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Box, Button } from '@mui/material'
 import DownloadIcon from '@mui/icons-material/Download'
 import DisplayResume from './DisplayResume'
+import ResumeUploader from '../uploadjson/ResumeUploader'
 
 function Preview() {
   const resumeData = useSelector((state) => state.resume)
@@ -27,15 +28,15 @@ function Preview() {
   
 
     <Box sx={{ p: 3 }}>
-      <Button 
+      {/* <Button 
         variant="contained" 
         startIcon={<DownloadIcon />}
         onClick={handleDownloadJSON}
         sx={{ mb: 2 }}
       >
         Download Resume JSON
-      </Button>
-      
+      </Button> */}
+      <ResumeUploader/>
       <Box 
         component="pre"
         sx={{
