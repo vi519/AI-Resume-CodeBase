@@ -169,14 +169,14 @@ function Experience() {
         <Box 
           key={exp.id} 
           sx={{ 
-            mt: 2, 
-            p: 2, 
+            mt: 2,
+            px: 1, // 8px left and right
+            py: 0.25, // 2px top and bottom
             border: '1px solid #ddd', 
             borderRadius: 1,
             maxWidth: "500px",
             margin: "20px auto",
-            position: 'relative',
-            padding:"4px 16px"  // Add this for absolute positioning of delete button
+            position: 'relative'
           }}
         >
           <IconButton

@@ -1,6 +1,6 @@
 /* Base settings */
 .ai-cv-dr-section {
-   font-family: "Cormorant Garamond", serif; /* Changed to lighter font */
+   font-family:  serif; /* Changed to lighter font */
     font-size: 10pt;
     color: black;  /* Softer color than pure black */
     margin: 0;
@@ -128,7 +128,7 @@ ul {
     
 }
 .ai-cv-experience-company-designation-sec{
-    font-size: 12pt;
+    font-size: 11pt;
     font-weight: 700;
     color: black;
     white-space: nowrap;
@@ -138,6 +138,8 @@ ul {
 .ai-cv-experience-company-designation{
     padding-right: 2px;
     font-family: 12pt;
+    line-height: 1;
+    font-weight: 700;
 }
 .ai-cv-experience-company-description {
   word-break: break-word;

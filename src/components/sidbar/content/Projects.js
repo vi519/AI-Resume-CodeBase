@@ -194,14 +194,15 @@ function Projects() {
       {projects.map((project) => (
         <Box
           key={project.id}
-          sx={{
-            mt: 3,
-            p: 2,
-            border: '1px solid #ddd',
+          sx={{ 
+            mt: 2,
+            px: 1, // 8px left and right
+            py: 0.25, // 2px top and bottom
+            border: '1px solid #ddd', 
             borderRadius: 1,
-            position: 'relative',
-            maxWidth: 600,
-            margin: '20px auto'
+            maxWidth: "500px",
+            margin: "20px auto",
+            position: 'relative'
           }}
         >
           <IconButton
@@ -215,7 +216,12 @@ function Projects() {
           >
             <DeleteIcon />
           </IconButton>
-          <h3>{project.title}</h3>
+          <h3 style={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '90%' // leave space for delete icon
+      }}>{project.title}</h3>
           {/* <p>{project.description}</p>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, my: 1 }}>
             {project.technologies.map((tech, index) => (

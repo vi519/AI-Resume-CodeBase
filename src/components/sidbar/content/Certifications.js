@@ -124,14 +124,15 @@ function Certifications() {
       {certifications.map((cert) => (
         <Box
           key={cert.id}
-          sx={{
-            mt: 3,
-            p: 2,
-            border: '1px solid #ddd',
+          sx={{ 
+            mt: 2,
+            px: 1, // 8px left and right
+            py: 0.25, // 2px top and bottom
+            border: '1px solid #ddd', 
             borderRadius: 1,
-            position: 'relative',
-            maxWidth: 600,
-            margin: '20px auto'
+            maxWidth: "500px",
+            margin: "20px auto",
+            position: 'relative'
           }}
         >
           <IconButton
@@ -145,14 +146,12 @@ function Certifications() {
           >
             <DeleteIcon />
           </IconButton>
-          <h3>{cert.name}</h3>
-          <p>{cert.issuingOrganization}</p>
-          <p>Valid: {cert.issueDate} - {cert.expiryDate}</p>
-          {cert.credentialLink && (
-            <a href={cert.credentialLink} target="_blank" rel="noopener noreferrer">
-              View Credential
-            </a>
-          )}
+          <h3   style={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '90%' // leave space for delete icon
+      }}>{cert.name}</h3>
         </Box>
       ))}
     </div>

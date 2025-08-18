@@ -26,7 +26,9 @@ function Preview() {
 
     <>
   
-
+  <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+            {JSON.stringify(resumeData, null, 2)}
+          </pre>
     <Box sx={{ p: 3 }}>
       {/* <Button 
         variant="contained" 

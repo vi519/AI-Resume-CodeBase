@@ -12,34 +12,36 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { PROFILE_LABELS, LINK_STYLES, CSS_CLASSES } from '@/constants/resumeConstants';
 import html2pdf from 'html2pdf.js';
 import { SkillSetWrapper } from '@/wrappper/SkillSetWrapper';
+import { formatDateToMonthYear } from '@/utils/utils';
 
 function DisplayResume() {
-    const resumeData = useSelector((state) => state.resume);
-    const downloadPDF = () => {
-        const element = document.getElementById('resume-content');
-        const opt = {
-            margin: [0.1, 0.1],
-            filename: `${resumeData?.personalDetails?.firstName}_${resumeData?.personalDetails?.lastName}_Resume.pdf`,
-            image: { type: 'jpeg', quality: 1.0 },
-            html2canvas: { 
-                scale: 3, // Increase for higher DPI effect
-                useCORS: true,
-                logging: false
-            },
-            jsPDF: { 
-                unit: 'in', 
-                format: 'letter', 
-                orientation: 'portrait',
-                compress: false // Keep full quality
-            }
-        };
+     const resumeData = useSelector((state) => state.resume);
+    // const downloadPDF = () => {
+    //     const element = document.getElementById('resume-content');
+    //     const opt = {
+    //         margin: [0.1, 0.1],
+    //         filename: `${resumeData?.personalDetails?.firstName}_${resumeData?.personalDetails?.lastName}_Resume.pdf`,
+    //         image: { type: 'jpeg', quality: 1.0 },
+    //         html2canvas: { 
+    //             scale: 3, // Increase for higher DPI effect
+    //             useCORS: true,
+    //             logging: false
+    //         },
+    //         jsPDF: { 
+    //             unit: 'in', 
+    //             format: 'letter', 
+    //             orientation: 'portrait',
+    //             compress: false // Keep full quality
+    //         }
+    //     };
     
-        html2pdf().set(opt).from(element).save();
-    };
+    //     html2pdf().set(opt).from(element).save();
+    // };
     
 
     return (
         <>
+         
        
             <div id="resume-content" className={CSS_CLASSES.section}>
                 <div className={CSS_CLASSES.heading}>
@@ -124,7 +126,7 @@ function DisplayResume() {
                                 <div className='ai-cv-experience-company'>
                                     <div className='ai-cv-experience-company-name'>{exp.jobTitle}</div>
                                     <div className='ai-cv-experience-company-designation'>
-                                        <i>{exp.companyName}</i>
+                                    <i>{exp?.companyName}{exp?.location && ` - ${exp.location}`}</i>
                                     </div>
                                     <div className='ai-cv-experience-company-description'>
                                         {exp.description.split('\n').map((point, index) => (
@@ -134,7 +136,7 @@ function DisplayResume() {
                                 </div>
                               
                                 <div className='ai-cv-experience-company-designation-sec'>
-                                    {`${exp.startDate} ${exp.current ? '- Present' : `- ${exp.endDate}`}`}
+                                   <i> {`${formatDateToMonthYear(exp.startDate)} ${exp.current ? '- Present' : `- ${formatDateToMonthYear(exp.endDate)}`}`}</i>
                                 </div>
                             </div>
                         ))}
@@ -150,17 +152,19 @@ function DisplayResume() {
                                 <div className='ai-cv-experience-company'>
                                     <div className='ai-cv-experience-company-name'>{edu?.institution}</div>
                                     <div className='ai-cv-experience-company-designation'>
-                                        <i>{edu?.degree}</i>
+                                        <i>{`${edu?.degree} - ${edu?.field}`}</i>
                                     </div>
-                                    <div className='ai-cv-experience-company-description'>
-                                    {edu?.field }
-                                    </div>
+                                    {/* <div className='ai-cv-experience-company-description'>
+                                    {edu?.field}
+                                    </div> */}
                                 </div>
                                 {/* <div className='ai-cv-experience-company-designation'> */}
                                 {/* <span style={{width:"fit-content"}}>{edu?.grade}<br/>
                                 {edu?.startDate} - {edu?.current ? 'Present' : edu?.endDate}</span> */}
                                 <div className='ai-cv-experience-company-designation-sec'>
-                                    {`${edu.startDate} ${edu.current ? '- Present' : `- ${edu.endDate}`}`}
+                                    {`${formatDateToMonthYear(edu.startDate)} ${edu.current ? '- Present' : `- ${formatDateToMonthYear(edu.endDate)}`}`}
+                                    <br/>
+                                    {`${edu?.grade}`}
                                 </div>
                                     
                                 {/* </div> */}
@@ -225,7 +229,7 @@ function DisplayResume() {
                                 {resumeData.achievements.map((achievement) => (
                                     <div key={achievement.id} className='ai-cv-achievement-item'>
                                         <div className='ai-cv-achievement-content'>
-                                            <div className='ai-cv-achievement-description'>
+                                            <div className='ai-cv-experience-company-description'>
                                                 {`• ${achievement.description}`}
                                             </div>
                                         </div>
@@ -245,7 +249,7 @@ function DisplayResume() {
                         <div className="ai-cv-skill-section">
     <SkillSetWrapper title="Technical Skills" skills={resumeData?.skills?.technical} />
     <SkillSetWrapper title="Soft Skills" skills={resumeData?.skills?.soft} />
-    <SkillSetWrapper title="Other Skills" skills={resumeData?.skills?.management} />
+    <SkillSetWrapper title="Management Skills" skills={resumeData?.skills?.management} />
 </div>
                    
                     

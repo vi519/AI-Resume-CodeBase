@@ -113,26 +113,7 @@ export default function ResumeUploader() {
           }}
         >
           {/* Upload Button */}
-          <Button
-            variant="contained"
-            component="label"
-            startIcon={<UploadFileIcon />}
-            sx={{
-              minWidth: 180,
-              py: 1,
-              fontWeight: 500,
-              backgroundColor: '#000',
-              color: '#fff',
-              '&:hover': {
-                backgroundColor: '#fff',
-                color: '#000',
-                border: '1px solid #000'
-              }
-            }}
-          >
-            Upload JSON
-            <input type="file" accept=".json" hidden onChange={handleUpload} />
-          </Button>
+          
 
           {/* Download JSON Button */}
           <Button
@@ -153,6 +134,26 @@ export default function ResumeUploader() {
             }}
           >
             Download JSON
+          </Button>
+          <Button
+            variant="contained"
+            component="label"
+            startIcon={<UploadFileIcon />}
+            sx={{
+              minWidth: 180,
+              py: 1,
+              fontWeight: 500,
+              backgroundColor: '#000',
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: '#fff',
+                color: '#000',
+                border: '1px solid #000'
+              }
+            }}
+          >
+            Upload JSON
+            <input type="file" accept=".json" hidden onChange={handleUpload} />
           </Button>
 
           {/* Download PDF Button */}

@@ -200,7 +200,7 @@ function Education() {
         maxWidth: '90%' // leave space for delete icon
       }}
     >
-      {edu.degree}
+      {edu.institution}
     </h3>
   </Box>
 ))}
