@@ -1,5 +1,5 @@
 "use client"
-import { Button, InputAdornment, TextField, Box, Checkbox, IconButton } from '@mui/material';
+import { Button, InputAdornment, TextField, Box, Checkbox, IconButton, FormControlLabel } from '@mui/material';
 import React, { useState } from 'react';
 import "@/styles/components/experience.css";
 import { addMore } from '@/constants/sidebarconstant';
@@ -9,7 +9,9 @@ import DoubleDatePickerWrapper from '@/wrappper/DoubleDatePickerWrapper';
 import { useSelector, useDispatch } from 'react-redux';
 import { addExperience, deleteExperience } from '@/redux/resumeSlice';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import DescriptionIcon from '@mui/icons-material/Description';
+import TitleIcon from '@mui/icons-material/Title';
 function Experience() {
   const dispatch = useDispatch();
   const experiences = useSelector((state) => state.resume.experience);
@@ -58,16 +60,7 @@ function Experience() {
 
   return (
     <div>
-      <div className="ai-cv-experience-content">
-        <Button 
-          variant="contained" 
-          color="success" 
-          fullWidth
-          onClick={handleSubmit}
-        >
-          {addMore}
-        </Button>
-      </div>
+   
 
       <Box className="ai-cv-experience-textbox">
         <TextField
@@ -79,7 +72,7 @@ function Experience() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <TitleIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -115,7 +108,7 @@ function Experience() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <LocationOnIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -123,17 +116,28 @@ function Experience() {
         />
       </Box>
 
-      <Checkbox
-        checked={formData.current}
-        onChange={(e) => handleInputChange('current', e.target.checked)}
-        inputProps={{ 'aria-label': 'controlled' }}
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={formData.current}
+            onChange={(e) => handleInputChange('current', e.target.checked)}
+            inputProps={{ 'aria-label': 'controlled' }}
+          />
+        }
+        label="Currently Working"
+        sx={{
+          '& .MuiFormControlLabel-label': {
+            color: 'rgba(0, 0, 0, 0.6)',
+            fontSize:"1rem"
+          }
+        }}
       />
 
       <Box className="ai-cv-experience-textbox">
         <TextField
           label="Work Description"
           multiline
-          rows={4}
+          rows={2}
           variant="standard"
           fullWidth
           value={formData.description}
@@ -141,7 +145,7 @@ function Experience() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <WorkIcon color="action" />
+                <DescriptionIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -149,7 +153,7 @@ function Experience() {
         />
       </Box>
 
-      <div style={{ maxWidth: "500px", margin: "auto" }}>
+      <div style={{ maxWidth: "500px", margin: "auto", paddingTop:"16px" }}>
         <DoubleDatePickerWrapper
           startDate={formData.startDate}
           endDate={formData.endDate}
@@ -178,19 +182,30 @@ function Experience() {
             onClick={() => handleDelete(exp.id)}
             sx={{
               position: 'absolute',
-              right: 8,
-              top: 8,
+              right: 4,
+              top: 4,
               color: 'error.main'
             }}
           >
             <DeleteIcon />
           </IconButton>
           <h3>{exp.jobTitle} at {exp.companyName}</h3>
-          <p>{exp.location}</p>
+          {/* <p>{exp.location}</p>
           <p>{exp.startDate} - {exp.current ? 'Present' : exp.endDate}</p>
-          <p>{exp.description}</p>
+          <p>{exp.description}</p> */}
         </Box>
       ))}
+
+<div className="ai-cv-experience-content">
+        <Button 
+          variant="contained" 
+          color="success" 
+          fullWidth
+          onClick={handleSubmit}
+        >
+          {addMore}
+        </Button>
+      </div>
     </div>
   );
 }

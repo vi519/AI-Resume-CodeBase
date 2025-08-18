@@ -1,18 +1,34 @@
-.ai-cv-portal{
+.ai-cv-portal {
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
+    flex-direction: row; /* Default for desktop */
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.ai-cv-mysidebarpages{
-    width:30%;
-    background-color: aliceblue;
+/* Sidebar and Preview (Desktop) */
+.ai-cv-mysidebarpages {
+    width: 30%;
+    background-color: darkgray;
     height: max-content;
-
-    
 }
 
-.ai-cv-previewpages{
-    width:70%
+.ai-cv-previewpages {
+    width: 70%;
 }
 
+/* ✅ Mobile view: stack and full width */
+@media screen and (max-width: 768px) {
+    .ai-cv-portal {
+        flex-direction:  column-reverse ; /* Sidebar below preview */
+        align-items: stretch; /* Make both take full width */
+    }
+
+    .ai-cv-mysidebarpages,
+    .ai-cv-previewpages {
+        width: 100%; /* Full width for mobile */
+    }
+
+    .ai-cv-mysidebarpages {
+        margin-top: 10px; /* Optional spacing between blocks */
+    }
+}

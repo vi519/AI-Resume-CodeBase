@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import "@/styles/components/education.css";
 import { addMore } from '@/constants/sidebarconstant';
 import SchoolIcon from '@mui/icons-material/School';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import BookIcon from '@mui/icons-material/Book';
+import GradeIcon from '@mui/icons-material/Grade';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DeleteIcon from '@mui/icons-material/Delete';
 import dayjs from "dayjs";
 import DoubleDatePickerWrapper from '@/wrappper/DoubleDatePickerWrapper';
@@ -56,16 +60,7 @@ function Education() {
 
   return (
     <div>
-      <div className="ai-cv-education-content">
-        <Button 
-          variant="contained" 
-          color="success" 
-          fullWidth
-          onClick={handleSubmit}
-        >
-          {addMore}
-        </Button>
-      </div>
+    
 
       <Box className="ai-cv-education-textbox">
         <TextField
@@ -77,7 +72,7 @@ function Education() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SchoolIcon color="action" />
+                <AccountBalanceIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -113,7 +108,7 @@ function Education() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SchoolIcon color="action" />
+                <BookIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -131,7 +126,7 @@ function Education() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SchoolIcon color="action" />
+                <GradeIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -149,7 +144,7 @@ function Education() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SchoolIcon color="action" />
+                <LocationOnIcon color="action" />
               </InputAdornment>
             ),
           }}
@@ -200,6 +195,17 @@ function Education() {
           <p>{edu.startDate} - {edu.endDate}</p>
         </Box>
       ))}
+
+<div className="ai-cv-education-content">
+        <Button 
+          variant="contained" 
+          color="success" 
+          fullWidth
+          onClick={handleSubmit}
+        >
+          {addMore}
+        </Button>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,9 @@
 .ai-cv-experience-content{
 width: 100%;
+padding-top: 16px;
 }
 .ai-cv-experience-textbox{
     width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }

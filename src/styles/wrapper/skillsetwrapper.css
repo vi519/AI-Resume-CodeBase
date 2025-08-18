@@ -1,0 +1,8 @@
+.ai-cv-skill-category {
+    display: block;
+    white-space: normal;       /* Allows text to wrap */
+    word-break: break-word;    /* Break long words if needed */
+    overflow-wrap: anywhere;   /* Ensures wrapping for long strings */
+    width: 100%;  
+    font-size: 15px;       /* Respect container width */
+}

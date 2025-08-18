@@ -1,24 +1,38 @@
-.ai-cv-personaldetail-initials-section{
+.ai-cv-personaldetail-initials-section {
     display: flex;
     flex-direction: row;
-    gap:16px;
+    gap: 16px;
+    width: 100%;
 }
 
-.ai-cv-personaldetail-section{
-display: flex;
-flex-direction: column;
-gap:16px;
-justify-content: center;
-align-items: center;
+.ai-cv-personaldetail-initials-section > div {
+    flex: 1;
+    width: 100%;
 }
 
-.ai-cv-personaldetail-contact-section{
-display:flex;
-flex-direction: row;
-gap: 16px;
+.ai-cv-personaldetail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  
+}
 
+.ai-cv-personaldetail-contact-section {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+}
+
+.ai-cv-personaldetail-contact-section > * {
+    flex: 1;
 }
 
 .ai-cv-personaldetail-email {
     width: 100%;
-  }
+}
+
+.ai-cv-personaldetail-name {
+    width: 100%;
+}

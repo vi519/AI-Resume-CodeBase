@@ -1,10 +1,14 @@
 "use client"
 import React from 'react'
 import "@/styles/components/personaldetails.css"
-import { TextField, MenuItem, Select, FormControl, InputLabel } from "@mui/material"
+import { TextField, MenuItem, Select, FormControl, InputLabel, InputAdornment } from "@mui/material"
 import countryData from "@/json/countrycode.json"
 import { useSelector, useDispatch } from 'react-redux'
 import { updatePersonalDetails } from '@/redux/resumeSlice'
+import PersonIcon from '@mui/icons-material/Person';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import BadgeIcon from '@mui/icons-material/Badge';
 
 export default function PersonalDetails() {
   const dispatch = useDispatch()
@@ -17,29 +21,45 @@ export default function PersonalDetails() {
   return (
     <div className='ai-cv-personaldetail-section'>
       <div className='ai-cv-personaldetail-initials-section'>
-        <div>
+        <div className='ai-cv-personaldetail-name'>
           <TextField 
             id="firstName" 
-            label="😎 first name" 
+            label="First Name" 
             variant="standard" 
+            fullWidth
             value={personalDetails.firstName}
             onChange={(e) => handleChange('firstName', e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <PersonIcon />
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
         <div>
           <TextField 
             id="lastName" 
-            label="😎 last name" 
+            label="Last Name" 
             variant="standard" 
+            fullWidth
             value={personalDetails.lastName}
             onChange={(e) => handleChange('lastName', e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <BadgeIcon />
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
       </div>
       
       <div className="ai-cv-personaldetail-contact-section">
-        <FormControl variant="standard" style={{ minWidth:170 }}>
-          <InputLabel>country code</InputLabel>
+        <FormControl variant="standard" fullWidth>
+          <InputLabel>Country Code</InputLabel>
           <Select
             value={personalDetails.countryCode}
             onChange={(e) => handleChange('countryCode', e.target.value)}
@@ -53,20 +73,35 @@ export default function PersonalDetails() {
         </FormControl>
 
         <TextField
-          label="☎️ contact number"
+          label="Contact Number"
           variant="standard"
+          fullWidth
           value={personalDetails.contactNumber}
           onChange={(e) => handleChange('contactNumber', e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <PhoneIcon />
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
 
       <div className='ai-cv-personaldetail-email'>
         <TextField
-          label="📧 email"
+          label="Email"
           variant="standard"
           fullWidth
           value={personalDetails.emailAddress}
           onChange={(e) => handleChange('emailAddress', e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
         />
       </div>
     </div>

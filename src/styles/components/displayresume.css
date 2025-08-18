@@ -2,7 +2,7 @@
 .ai-cv-dr-section {
    font-family: "Cormorant Garamond", serif; /* Changed to lighter font */
     font-size: 10pt;
-    color: #2c3e50;  /* Softer color than pure black */
+    color: black;  /* Softer color than pure black */
     margin: 0;
     padding: 10px;
     font-weight: 300;  /* Lighter font weight */
@@ -11,13 +11,14 @@
 
 /* Header (Name) - CMCSC10 (24.79pt) */
 .header-name {
-    display: flex;
+    color: black;
     flex-direction: row;
-    gap:12px;
-    justify-content: center ;
-    font-size: 24pt; /* Approx 24.79pt */
-    font-weight: 400;  /* Reduced from default bold */
-    color: #34495e;
+    justify-content: center;
+    gap: 12px;
+    font-size: 34pt;
+    font-weight: 400;
+    display: flex
+
 }
 
 /* Section Title - CMBX12 (11.96pt) */
@@ -29,7 +30,7 @@
     align-items: center;
     text-decoration: underline;
     font-weight: 500;
-    color: #2c3e50;
+    color: black;
 }
 
 /* Subheading or Company Name - CMBX10 (9.96pt Bold) */
@@ -55,7 +56,7 @@ ul {
 /* Contact info with Font Awesome icons */
 .contact-info i {
     margin-right: 6px;
-    color: #444;
+    color: black;
     font-size: 12px;
 }
 
@@ -96,10 +97,10 @@ ul {
 
 .ai-cv-dr-experience-heading {
     width: 100%;
-    border-bottom: 1px solid #bdc3c7;  /* Lighter border */
+    border-bottom: 1px solid black;  /* Lighter border */
     font-size: 13pt;
     font-weight: bold;  /* Reduced from bold */
-    color: #2c3e50;
+    color: black;
     /* padding-bottom: 6px; */
 
   }
@@ -108,7 +109,7 @@ ul {
 .ai-cv-experience-company-section{
     display: flex;
     justify-content: space-between;
-    padding-top: 8px;
+    padding-top: 4px;
     overflow-x: hidden;
     max-width: 100%;
     /* height: 100vh; */
@@ -120,15 +121,23 @@ ul {
     flex-direction: column;
 }
 .ai-cv-experience-company-name{
-    font-size: 10.5pt;
+    font-size: 11.5pt;
     font-weight: 500;  /* Reduced from bold */
-    color: #34495e;
+    color: black;
+    font-weight: bold;
     
 }
-.ai-cv-experience-company-designation{
+.ai-cv-experience-company-designation-sec{
     font-size: 10pt;
     font-weight: 300;
-    color: #7f8c8d;
+    color: black;
+    white-space: nowrap;
+    max-width: none;
+}
+
+.ai-cv-experience-company-designation{
+    padding-right: 2px;
+    font-family: 12pt;
 }
 .ai-cv-experience-company-description {
   word-break: break-word;
@@ -137,7 +146,8 @@ ul {
   overflow-wrap: break-word;
   font-weight: 300;
   line-height: 1.4;  /* Increased from 0.5 */
-  color: #2c3e50;
+  color: black;
+  
 }
 
 .ai-cv-experience-company-description p {
@@ -164,4 +174,9 @@ ul {
 
 .download-btn:hover {
     background-color: #1976d2;
+}
+
+.title-skill{
+    font-size: 14px;
+    font-weight: 900;
 }

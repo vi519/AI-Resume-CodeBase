@@ -11,18 +11,19 @@ import CodeIcon from "@mui/icons-material/Code";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { PROFILE_LABELS, LINK_STYLES, CSS_CLASSES } from '@/constants/resumeConstants';
 import html2pdf from 'html2pdf.js';
+import { SkillSetWrapper } from '@/wrappper/SkillSetWrapper';
 
 function DisplayResume() {
     const resumeData = useSelector((state) => state.resume);
-
+console.log(resumeData)
     const downloadPDF = () => {
         const element = document.getElementById('resume-content');
         const opt = {
-            margin: [0.1, 0.1], // Reduce margins [top&bottom, left&right]
+            margin: [0.1, 0.1],
             filename: `${resumeData?.personalDetails?.firstName}_${resumeData?.personalDetails?.lastName}_Resume.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
+            image: { type: 'jpeg', quality: 1.0 },
             html2canvas: { 
-                scale: 2,
+                scale: 3, // Increase for higher DPI effect
                 useCORS: true,
                 logging: false
             },
@@ -30,15 +31,17 @@ function DisplayResume() {
                 unit: 'in', 
                 format: 'letter', 
                 orientation: 'portrait',
-                compress: true
+                compress: false // Keep full quality
             }
         };
-
+    
         html2pdf().set(opt).from(element).save();
     };
+    
 
     return (
         <>
+        {/* <div>{JSON.stringify(resumeData)}</div> */}
             <button 
                 onClick={downloadPDF}
                 className="download-btn"
@@ -136,8 +139,9 @@ function DisplayResume() {
                                         ))}
                                     </div>
                                 </div>
-                                <div className='ai-cv-experience-company-designation'>
-                                    {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+                              
+                                <div className='ai-cv-experience-company-designation-sec'>
+                                    {`${exp.startDate} ${exp.current ? '- Present' : `- ${exp.endDate}`}`}
                                 </div>
                             </div>
                         ))}
@@ -159,11 +163,14 @@ function DisplayResume() {
                                     {edu?.field }
                                     </div>
                                 </div>
-                                <div className='ai-cv-experience-company-designation'>
-                                {edu?.grade}<br/>
-                                    {edu?.startDate} - {edu?.current ? 'Present' : edu?.endDate}
-                                    
+                                {/* <div className='ai-cv-experience-company-designation'> */}
+                                {/* <span style={{width:"fit-content"}}>{edu?.grade}<br/>
+                                {edu?.startDate} - {edu?.current ? 'Present' : edu?.endDate}</span> */}
+                                <div className='ai-cv-experience-company-designation-sec'>
+                                    {`${edu.startDate} ${edu.current ? '- Present' : `- ${edu.endDate}`}`}
                                 </div>
+                                    
+                                {/* </div> */}
                             </div>
                         ))}
                     </div>
@@ -233,6 +240,22 @@ function DisplayResume() {
                                 ))}
                             </div>
                         )}
+                    </div>
+
+
+
+                    <div className="ai-cv-dr-experience">
+                        <div className="ai-cv-dr-experience-heading">
+                            {/* <EmojiEventsIcon style={LINK_STYLES.icon} /> */}
+                            <div>Skills</div>
+                        </div>
+                        <div className="ai-cv-skill-section">
+    <SkillSetWrapper title="Technical Skills" skills={resumeData?.skills?.technical} />
+    <SkillSetWrapper title="Soft Skills" skills={resumeData?.skills?.soft} />
+    <SkillSetWrapper title="Other Skills" skills={resumeData?.skills?.management} />
+</div>
+                   
+                    
                     </div>
                 </div>
             </div>
