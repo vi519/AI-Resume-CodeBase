@@ -121,15 +121,14 @@ ul {
     flex-direction: column;
 }
 .ai-cv-experience-company-name{
-    font-size: 11.5pt;
+    font-size: 10pt;
     font-weight: 500;  /* Reduced from bold */
     color: black;
     font-weight: bold;
     
 }
 .ai-cv-experience-company-designation-sec{
-    font-size: 11pt;
-    font-weight: 700;
+    font-size: 10pt;
     color: black;
     white-space: nowrap;
     max-width: none;
@@ -139,7 +138,12 @@ ul {
     padding-right: 2px;
     font-family: 12pt;
     line-height: 1;
-    font-weight: 700;
+}
+.ai-cv-experience-company-designation-emp-loc{
+    padding-right: 2px;
+    font-family: 12pt;
+    line-height: 1;
+
 }
 .ai-cv-experience-company-description {
   word-break: break-word;
@@ -151,10 +155,18 @@ ul {
   color: black;
   
 }
+.ai-cv-experience-company-description-proj{
+    word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  line-height: 1;  /* Increased from 0.5 */
+  color: black;
+}
 
-.ai-cv-experience-company-description p {
+.ai-cv-experience-company-description {
   margin-bottom: 6px;
-  line-height: 1.5;  /* Increased from 0.9 */
+  line-height: 1;  /* Increased from 0.9 */
   font-weight: 300;
   text-align: justify;
 }

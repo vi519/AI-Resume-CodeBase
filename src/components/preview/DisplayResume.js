@@ -125,7 +125,7 @@ function DisplayResume() {
                             <div key={exp.id} className='ai-cv-experience-company-section'>
                                 <div className='ai-cv-experience-company'>
                                     <div className='ai-cv-experience-company-name'>{exp.jobTitle}</div>
-                                    <div className='ai-cv-experience-company-designation'>
+                                    <div className='ai-cv-experience-company-designation-emp-loc'>
                                     <i>{exp?.companyName}{exp?.location && ` - ${exp.location}`}</i>
                                     </div>
                                     <div className='ai-cv-experience-company-description'>
@@ -162,9 +162,9 @@ function DisplayResume() {
                                 {/* <span style={{width:"fit-content"}}>{edu?.grade}<br/>
                                 {edu?.startDate} - {edu?.current ? 'Present' : edu?.endDate}</span> */}
                                 <div className='ai-cv-experience-company-designation-sec'>
-                                    {`${formatDateToMonthYear(edu.startDate)} ${edu.current ? '- Present' : `- ${formatDateToMonthYear(edu.endDate)}`}`}
+                                   <i> {`${formatDateToMonthYear(edu.startDate)} ${edu.current ? '- Present' : `- ${formatDateToMonthYear(edu.endDate)}`}`}
                                     <br/>
-                                    {`${edu?.grade}`}
+                                    {`${edu?.grade}`}</i>
                                 </div>
                                     
                                 {/* </div> */}
@@ -181,9 +181,9 @@ function DisplayResume() {
                                 <div className='ai-cv-experience-company'>
                                     <div className='ai-cv-experience-company-name'>{proj.title}</div>
                                    
-                                    <div className='ai-cv-experience-company-description'>
+                                    <div className='ai-cv-experience-company-description-proj'>
                                         {proj.description.split('\n').map((point, index) => (
-                                            <p key={index}>{point.trim()}</p>
+                                            <span key={index}>{point.trim()}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -206,12 +206,12 @@ function DisplayResume() {
                                    
                                     <div className='ai-cv-experience-company-description'>
                                         {cert?.issuingOrganization?.split('\n').map((point, index) => (
-                                            <p key={index}>{point?.trim()}</p>
+                                            <span key={index}>{point?.trim()}</span>
                                         ))}
                                     </div>
                                 </div>
                                 <div className='ai-cv-experience-company-designation'>
-                                    {cert?.credentialLink}
+                                    <i>{cert?.credentialLink}</i>
                                 </div>
                             </div>
                         ))}
