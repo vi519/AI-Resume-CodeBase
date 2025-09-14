@@ -1,6 +1,6 @@
 /* Base settings */
 .ai-cv-dr-section {
-   font-family:  serif; /* Changed to lighter font */
+    font-family: "Open Sans";/* Changed to lighter font */
     font-size: 10pt;
     color: black;  /* Softer color than pure black */
     margin: 0;
@@ -151,7 +151,7 @@ ul {
   max-width: 100%;
   overflow-wrap: break-word;
   font-weight: 300;
-  line-height: 1.4;  /* Increased from 0.5 */
+  line-height: 1.8;  /* Increased from 0.5 */
   color: black;
   
 }
@@ -160,13 +160,13 @@ ul {
   white-space: pre-wrap;
   max-width: 100%;
   overflow-wrap: break-word;
-  line-height: 1;  /* Increased from 0.5 */
+  line-height: 1.8;  /* Increased from 0.5 */
   color: black;
 }
 
 .ai-cv-experience-company-description {
   margin-bottom: 6px;
-  line-height: 1;  /* Increased from 0.9 */
+  line-height: 1.8;  /* Increased from 0.9 */
   font-weight: 300;
   text-align: justify;
 }

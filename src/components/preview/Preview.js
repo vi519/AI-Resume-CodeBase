@@ -27,7 +27,7 @@ function Preview() {
     <>
   
   <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-            {JSON.stringify(resumeData, null, 2)}
+            {/* {JSON.stringify(resumeData, null, 2)} */}
           </pre>
     <Box sx={{ p: 3 }}>
       {/* <Button 
@@ -38,7 +38,7 @@ function Preview() {
       >
         Download Resume JSON
       </Button> */}
-      <ResumeUploader/>
+     
       <Box 
         component="pre"
         sx={{

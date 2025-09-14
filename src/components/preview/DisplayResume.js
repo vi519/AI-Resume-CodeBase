@@ -16,28 +16,6 @@ import { formatDateToMonthYear } from '@/utils/utils';
 
 function DisplayResume() {
      const resumeData = useSelector((state) => state.resume);
-    // const downloadPDF = () => {
-    //     const element = document.getElementById('resume-content');
-    //     const opt = {
-    //         margin: [0.1, 0.1],
-    //         filename: `${resumeData?.personalDetails?.firstName}_${resumeData?.personalDetails?.lastName}_Resume.pdf`,
-    //         image: { type: 'jpeg', quality: 1.0 },
-    //         html2canvas: { 
-    //             scale: 3, // Increase for higher DPI effect
-    //             useCORS: true,
-    //             logging: false
-    //         },
-    //         jsPDF: { 
-    //             unit: 'in', 
-    //             format: 'letter', 
-    //             orientation: 'portrait',
-    //             compress: false // Keep full quality
-    //         }
-    //     };
-    
-    //     html2pdf().set(opt).from(element).save();
-    // };
-    
 
     return (
         <>

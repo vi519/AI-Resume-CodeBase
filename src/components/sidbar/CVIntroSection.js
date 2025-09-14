@@ -4,10 +4,10 @@ import "@/styles/components/cvintrosection.css"
 function CVIntroSection() {
   return (
     <div>
-    <div className='ai-cv-cvintrosection'>
+    {/* <div className='ai-cv-cvintrosection'>
       <div className='ai-cv-headline-1'>{headline_1}</div>
       <div className='ai-cv-headline-2'>{headline_2}</div>
-    </div>
+    </div> */}
     <div className='ai-cv-headline3'>{headline_3}</div>
     </div>
   )

@@ -5,7 +5,7 @@ export const SkillSetWrapper = ({ title, skills }) => {
     if (!skills || skills.length === 0) return null;
 
     return (
-        <div className="ai-cv-skill-category">
+        <> {skills?.length>1? <div className="ai-cv-skill-category">
             <span>
                 {skills.map((skill, index) => (
                     index === 0
@@ -13,6 +13,7 @@ export const SkillSetWrapper = ({ title, skills }) => {
                         : `, ${skill}`
                 ))}
             </span>
-        </div>
+        </div>:null}</>
+      
     );
 };

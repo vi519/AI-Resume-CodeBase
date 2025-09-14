@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 function CVSetup() {
   return (
     <div>
-    <div className='ai-cv-settingheading'>Setting</div>
+    {/* <div className='ai-cv-settingheading'>Setting</div> */}
     <div className='ai-cv-cvsetup'>
     
     <div >
