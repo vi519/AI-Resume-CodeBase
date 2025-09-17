@@ -5,6 +5,8 @@ import { Box, Button } from '@mui/material'
 import DownloadIcon from '@mui/icons-material/Download'
 import DisplayResume from './DisplayResume'
 import ResumeUploader from '../uploadjson/ResumeUploader'
+import DisplayClassic from './DisplayClassic'
+import DisplayTwoColResume from './DisplayTwoColResume'
 
 function Preview() {
   const resumeData = useSelector((state) => state.resume)
@@ -54,7 +56,9 @@ function Preview() {
         }}
       >
 
-        <DisplayResume resumeData={JSON.stringify(resumeData, null, 2)} />
+        {/* <DisplayResume resumeData={JSON.stringify(resumeData, null, 2)} /> */}
+        {/* <DisplayClassic/> */}
+        <DisplayTwoColResume/>
      
       </Box>
     </Box>
