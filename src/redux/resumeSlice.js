@@ -1,9 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 import initialResumeData from '../json/resumse.json';
 
+const initialState = {
+  personalDetails: {
+    firstName: '',
+    lastName: '',
+    emailAddress: '',
+    contactNumber: '',
+    countryCode: ''
+  },
+  professionalLinks: {
+    github: '',
+    linkedin: '',
+    portfolio: '',
+    codingProfile: ''
+  },
+  education: [],
+  experience: [],
+  skills: {
+    technical: [],
+    softSkills: [],
+    languages: [],
+    tools: []
+  },
+  projects: [],
+  certifications: [],
+  achievements: [],
+  interests: []
+};
+
 const resumeSlice = createSlice({
   name: 'resume',
-  initialState: initialResumeData,
+  initialState: initialState,
   reducers: {
     loadResume: (state, action) => {
         // Replace entire state with uploaded JSON
@@ -65,6 +93,9 @@ const resumeSlice = createSlice({
     },
     updateInterests: (state, action) => {
       state.interests = action.payload;
+    },
+    resetState: () => {
+      return initialState;
     }
   }
 });
@@ -85,7 +116,8 @@ export const {
   addAchievement,
   deleteAchievement,
   updateInterests,
-  loadResume
+  loadResume,
+  resetState
 } = resumeSlice.actions;
 
 export default resumeSlice.reducer;

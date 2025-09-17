@@ -1,6 +1,6 @@
 .ai-cv-accordian {
     padding: 8px;
-    height: calc(100vh - 185px);
+    height: calc(100vh - 80px);
 
     overflow-y: auto;
     scroll-behavior: smooth; /* optional for smooth scrolling */

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadResume } from '@/redux/resumeSlice';
+import { loadResume, resetState } from '@/redux/resumeSlice';
 import {
   Button,
   Typography,
@@ -18,9 +18,21 @@ export default function ResumeUploader() {
   const resumeData = useSelector((state) => state.resume);
   const [error, setError] = useState('');
   const [fileName, setFileName] = useState('');
+  const fileInputRef = useRef(null);
 
-  const handleUpload = (event) => {
+  // Add effect to clear local state when resumeData is reset
+  useEffect(() => {
+    // Check if resumeData has been reset to initial state
+    if (!resumeData?.personalDetails?.firstName && 
+        !resumeData?.personalDetails?.lastName) {
+      setError('');
+      setFileName('');
+    }
+  }, [resumeData]);
+
+  const handleUpload = async (event) => {
     const file = event.target.files[0];
+    debugger
     if (!file) return;
 
     if (file.type !== 'application/json') {
@@ -28,23 +40,29 @@ export default function ResumeUploader() {
       return;
     }
 
-    setError('');
-    setFileName(file.name);
+    try {
+      const text = await file.text();
+      const uploadedData = JSON.parse(text);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const uploadedData = JSON.parse(e.target.result);
-        if (!uploadedData.personalDetails || !uploadedData.education) {
-          setError('Invalid resume format: Missing required fields.');
-          return;
-        }
-        dispatch(loadResume(uploadedData));
-      } catch (err) {
-        setError('Error parsing JSON. Please check the file content.');
+      if (typeof uploadedData !== 'object') {
+        setError('Invalid JSON format');
+        return;
       }
-    };
-    reader.readAsText(file);
+
+      // First reset the state
+      await dispatch(resetState());
+
+      // Then load the new data
+      await dispatch(loadResume(uploadedData));
+
+      setError('');
+      setFileName(file.name);
+
+    } catch (err) {
+      console.error('Upload error:', err);
+      setError('Error parsing JSON file. Please check the format.');
+      setFileName('');
+    }
   };
 
   const handleDownload = () => {
@@ -81,12 +99,18 @@ export default function ResumeUploader() {
     html2pdf().set(opt).from(element).save();
   };
 
+  const handleFileSelect = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';  // Clear the input
+      fileInputRef.current.click();
+    }
+  };
+
   return (
     <Card
       sx={{
         maxWidth: '100%',
         p: 3,
-        
         borderRadius: 3,
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
         backgroundColor: '#fff'
@@ -139,6 +163,7 @@ export default function ResumeUploader() {
             variant="contained"
             component="label"
             startIcon={<UploadFileIcon />}
+            onClick={handleFileSelect}  // Changed to use handleFileSelect
             sx={{
               minWidth: 180,
               py: 1,
@@ -153,7 +178,13 @@ export default function ResumeUploader() {
             }}
           >
             Upload JSON
-            <input type="file" accept=".json" hidden onChange={handleUpload} />
+            <input 
+              type="file" 
+              accept=".json" 
+              hidden 
+              ref={fileInputRef}
+              onChange={handleUpload} 
+            />
           </Button>
 
           {/* Download PDF Button */}

@@ -171,7 +171,7 @@ function Experience() {
           sx={{ 
             mt: 2,
             px: 1, // 8px left and right
-            py: 0.25, // 2px top and bottom
+            py: 3, // 2px top and bottom
             border: '1px solid #ddd', 
             borderRadius: 1,
             maxWidth: "500px",
@@ -190,7 +190,7 @@ function Experience() {
           >
             <DeleteIcon />
           </IconButton>
-          <h3>{exp.jobTitle} at {exp.companyName}</h3>
+          <h3>{exp.companyName}</h3>
           {/* <p>{exp.location}</p>
           <p>{exp.startDate} - {exp.current ? 'Present' : exp.endDate}</p>
           <p>{exp.description}</p> */}

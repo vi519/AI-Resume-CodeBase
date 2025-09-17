@@ -38,7 +38,7 @@ function Preview() {
       >
         Download Resume JSON
       </Button> */}
-     
+      <ResumeUploader/>
       <Box 
         component="pre"
         sx={{
@@ -46,7 +46,6 @@ function Preview() {
           p: 2,
           borderRadius: 1,
           overflow: 'auto',
-          maxHeight: 'calc(100vh - 100px)',
           border: '1px solid',
           borderColor: 'divider',
           '&:hover': {

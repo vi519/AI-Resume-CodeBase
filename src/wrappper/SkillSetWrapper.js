@@ -9,7 +9,7 @@ export const SkillSetWrapper = ({ title, skills }) => {
             <span>
                 {skills.map((skill, index) => (
                     index === 0
-                        ? <span key={index}><span className="title-skill">{title}:</span> {skill}</span>
+                        ? <span key={index}><span className="title-skill"><b>{title}:</b></span>{skill}</span>
                         : `, ${skill}`
                 ))}
             </span>

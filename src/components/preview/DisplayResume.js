@@ -10,7 +10,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import CodeIcon from "@mui/icons-material/Code";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { PROFILE_LABELS, LINK_STYLES, CSS_CLASSES } from '@/constants/resumeConstants';
-import html2pdf from 'html2pdf.js';
+//import html2pdf from 'html2pdf.js';
 import { SkillSetWrapper } from '@/wrappper/SkillSetWrapper';
 import { formatDateToMonthYear } from '@/utils/utils';
 
@@ -102,7 +102,7 @@ function DisplayResume() {
                         {resumeData?.experience?.map((exp) => (
                             <div key={exp.id} className='ai-cv-experience-company-section'>
                                 <div className='ai-cv-experience-company'>
-                                    <div className='ai-cv-experience-company-name'>{exp.jobTitle}</div>
+                                    <div className='ai-cv-experience-company-name'><i>{exp.jobTitle}</i></div>
                                     <div className='ai-cv-experience-company-designation-emp-loc'>
                                     <i>{exp?.companyName}{exp?.location && ` - ${exp.location}`}</i>
                                     </div>
@@ -128,7 +128,7 @@ function DisplayResume() {
                         {resumeData?.education?.map((edu) => (
                             <div key={edu.id} className='ai-cv-experience-company-section'>
                                 <div className='ai-cv-experience-company'>
-                                    <div className='ai-cv-experience-company-name'>{edu?.institution}</div>
+                                    <div className='ai-cv-experience-company-name'><i>{edu?.institution}</i></div>
                                     <div className='ai-cv-experience-company-designation'>
                                         <i>{`${edu?.degree} - ${edu?.field}`}</i>
                                     </div>
@@ -157,7 +157,7 @@ function DisplayResume() {
                         {resumeData?.projects?.map((proj) => (
                             <div key={proj.id} className='ai-cv-experience-company-section'>
                                 <div className='ai-cv-experience-company'>
-                                    <div className='ai-cv-experience-company-name'>{proj.title}</div>
+                                    <div className='ai-cv-experience-company-name'><i>{proj.title}</i></div>
                                    
                                     <div className='ai-cv-experience-company-description-proj'>
                                         {proj.description.split('\n').map((point, index) => (
@@ -180,7 +180,7 @@ function DisplayResume() {
                         {resumeData?.certifications?.map((cert) => (
                             <div key={cert.id} className='ai-cv-experience-company-section'>
                                 <div className='ai-cv-experience-company'>
-                                    <div className='ai-cv-experience-company-name'>{cert?.name}</div>
+                                    <div className='ai-cv-experience-company-name'><i>{cert?.name}</i></div>
                                    
                                     <div className='ai-cv-experience-company-description'>
                                         {cert?.issuingOrganization?.split('\n').map((point, index) => (
@@ -208,7 +208,7 @@ function DisplayResume() {
                                     <div key={achievement.id} className='ai-cv-achievement-item'>
                                         <div className='ai-cv-achievement-content'>
                                             <div className='ai-cv-experience-company-description'>
-                                                {`• ${achievement.description}`}
+                                                {`•${achievement.description}`}
                                             </div>
                                         </div>
                                     </div>
