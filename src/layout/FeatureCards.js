@@ -6,25 +6,35 @@ import { Box, Grid } from '@mui/material';
 export default function FeatureCards() {
   const cardList = [
     {
-      title: 'AI Job Description Matching',
-      description: 'Use AI to tailor your resume to any job posting',
-      buttonLabel: 'Get Started',
-    },
-    {
       title: 'Live Resume Preview',
       description: 'Create and preview your resume in real time',
       buttonLabel: 'Learn More',
+    },
+    {
+      title: 'Try Different Template',
+      description: 'Gen Gold/Bold might like it',
+      buttonLabel: 'Get Started',
+    },
+    {
+      title: 'Upload Json of Resume',
+      description: 'For easy access of your history resume',
+      buttonLabel: 'Get Started',
+    },
+    {
+      title: 'Download Json of Resume',
+      description: 'For your backlogs',
+      buttonLabel: 'Get Started',
     },
     {
       title: 'PDF Download',
       description: 'Download professional-quality PDFs with a click',
       buttonLabel: 'Read More',
     },
-    {
-      title: 'Get Live Rating of Resume',
-      description: 'Get your rating of resume a/c to Job description',
-      buttonLabel: 'Get Started',
-    },
+    // {
+    //   title: 'Get Live Rating of Resume',
+    //   description: 'Get your rating of resume a/c to Job description',
+    //   buttonLabel: 'Get Started',
+    // },
   ];
 
   return (

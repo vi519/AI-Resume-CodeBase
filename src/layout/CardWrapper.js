@@ -12,20 +12,20 @@ const CardWrapper = ({ data }) => {
   const { title, description, imageUrl, buttonLabel } = data;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, background:"#262626", border: "1px solid #ebebeb" }}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" sx={{color:"#ebebeb" }}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2"  sx={{color:"#ebebeb" }}>
           {description}
         </Typography>
       </CardContent>
-      {buttonLabel && (
+      {/* {buttonLabel && (
         <CardActions>
           <Button size="small">{buttonLabel}</Button>
         </CardActions>
-      )}
+      )} */}
     </Card>
   );
 };

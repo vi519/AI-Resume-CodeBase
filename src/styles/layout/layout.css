@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
 
 
@@ -9,8 +8,26 @@
     padding-left: 64px;
     padding-right: 64px;
     padding-top: 16px;
+    overflow-y: auto;
    
   
+}
+
+/* Add media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .ai-cv-landingpage {
+        justify-content: unset;
+        flex-direction: column;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .ai-cv-rightheading {
+        margin-top: 16px;
+        justify-content: center;
+    }
 }
 
 .ai-cv-leftheading{
@@ -43,13 +60,14 @@
 .ai-cv-intropage{
     display: flex;
     justify-content: center;
-    background: #7CAFB1;
+    background:#262626;
     margin-top:8px;
     padding: 64px;
 }
 
 .ai-cv-landingsection{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    background:#262626;
 }
 .ai-cv-intro-tagline1{
     display: flex;
@@ -58,7 +76,7 @@
 .ai-cv-intro-subtagline{
     font-size: 24px;
     padding-top: 8px;
-    /* color: dimgrey; */
+    color: #ebebeb;
 }
 
 .ai-cv-feature-section{
@@ -66,6 +84,7 @@
     justify-content: center;
     align-items: center;
     font-size: 42px;
+    color: #ebebeb;
 }
 .ai-cv-feature-cards{
     display: flex;
