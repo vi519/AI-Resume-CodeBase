@@ -6,6 +6,7 @@ import IntroPage from './IntroPage'
 import { ABOUT_ME, AI_CV, FEATURES, HOW_IT_WORKS } from '@/constants/layoutconstants'
 import FeatureCards from './FeatureCards'
 import Footer from './Footer'
+import Link from 'next/link'
 
 function LandingPage() {
   return (
@@ -16,8 +17,8 @@ function LandingPage() {
           <div>
             <Image src={githubpng} alt="GitHub" width={20} height={20} />
           </div>
-          <div>{HOW_IT_WORKS}</div>
-          <div>{ABOUT_ME}</div>
+          {/* <div>{HOW_IT_WORKS}</div> */}
+          <div style={{ }}><Link href="/aboutme" style={{textDecoration:"none",color:"#6bafb3"}}>{ABOUT_ME}</Link></div>
           
         </div>
       </div>
