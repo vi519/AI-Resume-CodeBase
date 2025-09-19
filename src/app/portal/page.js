@@ -1,19 +1,23 @@
 'use client'
-import Preview from "@/components/preview/Preview";
-import CVIntroSection from "@/components/sidbar/CVIntroSection";
-import CVSetup from "@/components/sidbar/CVSetup";
-import CVAccordian from "@/components/sidbar/CVAccordian";
+import dynamic from 'next/dynamic'
 import { useDispatch } from 'react-redux';
 import { resetState } from '@/redux/resumeSlice';
 import { Button } from '@mui/material';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import "../../styles/components/portal.css";
 
+// Dynamically import components with no SSR
+const Preview = dynamic(() => import("@/components/preview/Preview"), { ssr: false })
+const CVIntroSection = dynamic(() => import("@/components/sidbar/CVIntroSection"), { ssr: false })
+const CVSetup = dynamic(() => import("@/components/sidbar/CVSetup"), { ssr: false })
+const CVAccordian = dynamic(() => import("@/components/sidbar/CVAccordian"), { ssr: false })
+
 export default function Portal() {
   const dispatch = useDispatch();
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all data? This cannot be undone.')) {
+    // Check if window is defined (client-side only)
+    if (typeof window !== 'undefined' && window.confirm('Are you sure you want to reset all data? This cannot be undone.')) {
       dispatch(resetState());
     }
   };
@@ -21,7 +25,6 @@ export default function Portal() {
   return (
     <div className="ai-cv-portal">
       <div className="ai-cv-mysidebarpages">
-       
         <CVIntroSection/>
         <Button
           variant="outlined"
