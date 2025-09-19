@@ -15,7 +15,11 @@ function LandingPage() {
         <div className="ai-cv-leftheading">{AI_CV}</div>
         <div className="ai-cv-rightheading">
           <div>
-            <Image src={githubpng} alt="GitHub" width={20} height={20} />
+           <Link 
+  href="https://github.com/vi519/AI-Resume-CodeBase" 
+  target="_blank" 
+  rel="noopener noreferrer"
+> <Image src={githubpng} alt="GitHub" width={20} height={20} /></Link>
           </div>
           {/* <div>{HOW_IT_WORKS}</div> */}
           <div style={{ }}><Link href="/aboutme" style={{textDecoration:"none",color:"#6bafb3"}}>{ABOUT_ME}</Link></div>
