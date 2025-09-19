@@ -4,5 +4,5 @@
     word-break: break-word;    /* Break long words if needed */
     overflow-wrap: anywhere;   /* Ensures wrapping for long strings */
     width: 100%;  
-    font-size: 15px;       /* Respect container width */
+    font-size: 10pt;       /* Respect container width */
 }

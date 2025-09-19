@@ -1,6 +1,9 @@
 "use client"
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { Button } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
+import html2pdf from 'html2pdf.js';
 import '@/styles/components/displayresume.css';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,18 +13,50 @@ import LanguageIcon from "@mui/icons-material/Language";
 import CodeIcon from "@mui/icons-material/Code";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { PROFILE_LABELS, LINK_STYLES, CSS_CLASSES } from '@/constants/resumeConstants';
-//import html2pdf from 'html2pdf.js';
 import { SkillSetWrapper } from '@/wrappper/SkillSetWrapper';
 import { formatDateToMonthYear } from '@/utils/utils';
 
 function DisplayResume() {
-     const resumeData = useSelector((state) => state.resume);
+    const resumeData = useSelector((state) => state.resume);
+    const resumeRef = useRef(null);
+
+    const handleDownloadPDF = () => {
+        const element = resumeRef.current;
+        const opt = {
+            margin: 0.5,
+            filename: `${resumeData?.personalDetails?.firstName || 'resume'}_${resumeData?.personalDetails?.lastName || ''}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save();
+    };
+
+    const downloadButtonStyle = {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 1000,
+        backgroundColor: '#000',
+        color: '#fff',
+        '&:hover': {
+            backgroundColor: '#333'
+        }
+    };
 
     return (
         <>
-         
-       
-            <div id="resume-content" className={CSS_CLASSES.section}>
+            <Button
+                variant="contained"
+                startIcon={<DownloadIcon />}
+                onClick={handleDownloadPDF}
+                sx={downloadButtonStyle}
+            >
+                Download PDF
+            </Button>
+
+            <div ref={resumeRef} id="resume-content" className={CSS_CLASSES.section}>
                 <div className={CSS_CLASSES.heading}>
                     <div className={CSS_CLASSES.headerName}>
                         <div>{resumeData?.personalDetails?.firstName || ''}</div>

@@ -9,7 +9,7 @@ import html2pdf from 'html2pdf.js';
 export default function DisplayTwoColResume() {
   const resumeData = useSelector((state) => state.resume);
   const resumeRef = useRef(null);
-
+console.log("resumeData",resumeData)
   // Add download function
   const handleDownloadPDF = () => {
     const element = resumeRef.current;

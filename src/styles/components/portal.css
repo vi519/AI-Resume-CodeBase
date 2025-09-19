@@ -1,11 +1,13 @@
+/* Base styles */
 .ai-cv-portal {
     display: flex;
-    flex-direction: row; /* Default for desktop */
+    flex-direction: row;
     justify-content: space-between;
     gap: 10px;
+    min-height: 100vh;
+    /* padding: 16px; */
 }
 
-/* Sidebar and Preview (Desktop) */
 .ai-cv-mysidebarpages {
     width: 30%;
     background-color: darkgray;
@@ -16,21 +18,46 @@
     width: 70%;
     height: 100vh;
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
-/* ✅ Mobile view: stack and full width */
+/* Mobile view adjustments */
 @media screen and (max-width: 768px) {
     .ai-cv-portal {
-        flex-direction:  column-reverse ; /* Sidebar below preview */
-        align-items: stretch; /* Make both take full width */
+        flex-direction: column;
+        min-height: auto;
+        padding: 8px;
     }
 
-    .ai-cv-mysidebarpages,
+    .ai-cv-mysidebarpages{
+        width: 100%;
+        height:calc(100vh - 200px)
+    }
+    .ai-cv-previewpages{
+        width: 100%;
+        height: calc(100vh - 440px);
+        overflow-y: auto;
+    }
+
     .ai-cv-previewpages {
-        width: 100%; /* Full width for mobile */
+        width: 100%;
+        height: auto;
+        min-height: 50vh;
+        max-height: 70vh;
+        overflow-y: auto;
+        background: #ffffff;
+        padding: 12px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+}
 
-    .ai-cv-mysidebarpages {
-        margin-top: 10px; /* Optional spacing between blocks */
+/* Small mobile adjustments */
+@media screen and (max-width: 480px) {
+    .ai-cv-previewpages {
+        min-height: 40vh;
+        padding: 8px;
+        margin-bottom: 12px;
     }
 }
