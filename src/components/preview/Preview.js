@@ -46,9 +46,9 @@ function Preview() {
 
   return (
     <Box sx={{ p: 3 }}>
-    <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
+    {/* <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
             {JSON.stringify(resumeData, null, 2)}
-          </pre>
+          </pre> */}
       <ResumeUploader/>
       
       {/* Spicy Template Selector */}
