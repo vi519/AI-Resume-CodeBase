@@ -243,7 +243,7 @@ function DisplayResume() {
                                     <div key={achievement.id} className='ai-cv-achievement-item'>
                                         <div className='ai-cv-achievement-content'>
                                             <div className='ai-cv-experience-company-description'>
-                                                {`•${achievement.description}`}
+                                                {`• ${achievement.description}`}
                                             </div>
                                         </div>
                                     </div>
